@@ -48,5 +48,4 @@ const urlRef = ref(database, "user");
 onValue(urlRef, (snapshot) => {
   const data = snapshot.val();
   console.log(data.namn);
-  document.body.innerHTML = data.namn;
 });
