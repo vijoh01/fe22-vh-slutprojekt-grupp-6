@@ -1,12 +1,12 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 import {
     getDatabase, ref, set, onValue, remove, push
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
-
+const loginWrapper = document.querySelector('#loginWrapper');
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -70,7 +70,16 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
-
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('user already signed in')
+    loginWrapper.classList.add('hide');
+    const uid = user.uid;
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
@@ -78,7 +87,8 @@ function login(email, password) {
             // Login success
             console.log(user);
             alert(user.user.email + " has signed in.");
-        })
+            loginWrapper.classList.add('hide');
+            })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -113,4 +123,3 @@ function register() {
             alert(errorMessage);
         });
 }
-

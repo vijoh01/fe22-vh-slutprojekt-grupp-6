@@ -1,3 +1,4 @@
+
 :root {
   --clr-dark-100-: #393B5F;
   --clr-dark-200-: #545379;
@@ -46,6 +47,50 @@
     --input-color: var(--clr-light-1000);
     --button-color: var(--clr-dark-accent-accent-);
     --button-text-color: var(--clr-light-1000);
+
+body {
+    background-color: #F5EAE0;
+  }
+.hide {
+  display:none!important;
+}
+#loginWrapper {
+  height:100%;
+  width:100%;
+  position: absolute;
+  background-color: #F5EAE0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-form {
+  max-width:336px;
+  margin: 0 auto;
+}
+
+#login-form input {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+#login-form button {
+  padding: 1rem;
+  max-width: 150px;
+  margin: 1rem;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+
   }
 }
 
@@ -71,6 +116,15 @@ body {
   padding: 10px;
 
 }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 30px;
+    row-gap: 10px;
+  }
+
 
 
 input:focus {
@@ -101,4 +155,14 @@ input:focus {
   .card {
     flex-basis: calc(50% - 20px);
   }
+
 }
+
+
+
+  @media only screen and (max-width: 600px) {
+    .card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+
