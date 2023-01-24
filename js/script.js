@@ -10,6 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
 const loginWrapper = document.querySelector('#loginWrapper');
+const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
 
 // Your web app's Firebase configuration
@@ -65,6 +66,7 @@ var logout = document.getElementById("logout");
 
 loginForm.addEventListener("click", function (e) {
     e.preventDefault();
+    audio.play()
     var email = emailInput.value;
     var password = passwordInput.value;
     //register();
