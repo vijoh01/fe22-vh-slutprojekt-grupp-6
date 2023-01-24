@@ -87,7 +87,7 @@ function getCookie(cname) {
 }
 
 const sessionCookie = getCookie("__session");
-const auth = getAuth();
+
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
