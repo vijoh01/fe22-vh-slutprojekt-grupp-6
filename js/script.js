@@ -80,7 +80,7 @@ function login(email, password) {
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.add('hide');
             //cookies
-            return user.getIdToken().then(idToken = > {
+            user.getIdToken().then(idToken = > {
             const csrfToken = getCookie('csrfToken');
             document.cookie = '__session=' + csrfToken + ';max-age=36000';
           })
