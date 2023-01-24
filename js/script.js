@@ -1,11 +1,15 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 import {
   getDatabase,
@@ -15,6 +19,9 @@ import {
   remove,
   push,
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
+
+const loginWrapper = document.querySelector('#loginWrapper');
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -73,6 +80,7 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
+
 function login(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then(function (user) {
@@ -85,6 +93,32 @@ function login(email, password) {
       var errorMessage = error.message;
       alert(errorMessage);
     });
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('user already signed in')
+    loginWrapper.classList.add('hide');
+    const uid = user.uid;
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
+function login(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+        .then(function (user) {
+            // Login success
+            console.log(user);
+            alert(user.user.email + " has signed in.");
+            loginWrapper.classList.add('hide');
+            })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+        });
+
 }
 
 function register() {
@@ -115,6 +149,7 @@ function register() {
     });
 }
 
+
 //DANYS FEATURE
 let danyBtn = document.getElementById("danyBtn");
 let danyh4 = document.getElementById("danyh4");
@@ -122,3 +157,4 @@ let danyh4 = document.getElementById("danyh4");
 danyBtn.addEventListener("click", () => {
   danyh4.classList.toggle("hidden");
 });
+
