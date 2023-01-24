@@ -130,6 +130,14 @@ input:focus {
     margin-bottom: 20px;
 
   }
+
+  textarea {
+    resize: none;
+  }
+
+
+  input:focus {
+    outline: none !important;
 }
 
 body {
