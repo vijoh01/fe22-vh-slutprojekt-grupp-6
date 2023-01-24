@@ -20,6 +20,10 @@ body {
 
   }
 
+  textarea {
+    resize: none;
+  }
+
 
   input:focus {
     outline: none !important;
