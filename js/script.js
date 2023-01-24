@@ -111,7 +111,7 @@ if (sessionCookie) {
   console.log("User is not signed in.");
 }
 
-onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function(user) {
   if (user) {
     console.log('user already signed in')
     // User is signed in.
