@@ -86,7 +86,7 @@ const auth = getAuth();
 let currentUser = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if (user != null) {
         console.log(user.displayName + ' already signed in')
         loginWrapper.classList.remove('hide');
         const uid = user.uid;
