@@ -91,7 +91,7 @@ const sessionCookie = getCookie("__session");
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
-  signInWithCustomToken(auth, sessionCookie)
+  signInWithCredential(AuthCredential.fromJSON(sessionCookie))
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
