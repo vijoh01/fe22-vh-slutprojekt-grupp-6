@@ -1,51 +1,116 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
-import { getDatabase,ref,set,onValue,remove,push
+import {
+    getDatabase, ref, set, onValue, remove, push
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 
 // Your web app's Firebase configuration
-
 const firebaseConfig = {
-  databaseURL: "https://grupp-7-faf57-default-rtdb.europe-west1.firebasedatabase.app/",
-  apiKey: "AIzaSyCy9NnGD5XhgbTL_N8cMZQV68Ws2lXGfjs",
+    databaseURL: "https://chatapp-76264-default-rtdb.europe-west1.firebasedatabase.app/",
 
-  authDomain: "grupp-7-faf57.firebaseapp.com",
+    apiKey: "AIzaSyAZ0KJhUc6ltrF7QACjM8IW2JqeLWT3n3g",
 
-  projectId: "grupp-7-faf57",
+    authDomain: "chatapp-76264.firebaseapp.com",
 
-  storageBucket: "grupp-7-faf57.appspot.com",
+    projectId: "chatapp-76264",
 
-  messagingSenderId: "766654586149",
+    storageBucket: "chatapp-76264.appspot.com",
 
-  appId: "1:766654586149:web:31c7fbf916edbbab270ecc"
+    messagingSenderId: "957844540887",
+
+    appId: "1:957844540887:web:b31870f3a4d046dd3d4f92"
 
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+console.log(app);
 const database = getDatabase();
 
 console.log(database);
 
+
 // skriva
 function writeUserData(message) {
-  let adressRef= ref(database, "user" );
-  set(adressRef, {
-      namn: message,
-  });
+    let adressRef = ref(database, "user");
+    set(adressRef, {
+        namn: message,
+    });
 }
 
-writeUserData( "SUPP DOG!!!");
+writeUserData("SUPP DOG!!!");
 
 // läsa en specifik onValue direkt + när den ändrar value
 const urlRef = ref(database, "user");
 onValue(urlRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data.namn);
+    const data = snapshot.val();
+    console.log(data.namn);
 });
+
+
+var loginForm = document.getElementById("login-form");
+var emailInput = document.getElementById("email");
+var passwordInput = document.getElementById("password");
+
+
+loginForm.addEventListener("click", function (e) {
+    e.preventDefault();
+    var email = emailInput.value;
+    var password = passwordInput.value;
+    //register();
+    if ((e.target).id == "login-button")
+        login(email, password);
+    else if ((e.target).id == "register-button")
+        register();
+});
+
+const auth = getAuth();
+
+
+
+function login(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+        .then(function (user) {
+            // Login success
+            console.log(user);
+            alert(user.user.email + " has signed in.");
+        })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+        });
+}
+
+function register() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(function (user) {
+
+            alert(user.user.email + " has been registred.");
+            // Send email verification
+            /*currentUser.sendEmailVerification()
+                .then(function() {
+                alert("Verification email sent!");
+                })
+                .catch(function(error) {
+                // Handle errors
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage);
+                });
+            })*/
+        }).catch(function (error) {
+            // Handle errors
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+        });
+}
+
