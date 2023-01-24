@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential, OAuthCredential, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 import {
     getDatabase, ref, set, onValue, remove, push
@@ -70,6 +70,8 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
+
+/*
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
@@ -87,7 +89,7 @@ function getCookie(cname) {
 }
 
 const sessionCookie = getCookie("session");
-/*
+
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
@@ -110,21 +112,6 @@ if (sessionCookie) {
   // User is not signed in
   console.log("User is not signed in.");
 }
-*/
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log(
-      'user already signed in'
-    )
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
 
 function setCookie(name, value, days) {
   let expires = "";
@@ -135,7 +122,7 @@ function setCookie(name, value, days) {
   }
   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
-
+*/
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
@@ -159,6 +146,21 @@ function login(email, password) {
             alert(errorMessage);
         });
 }
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log(
+      'user already signed in'
+    )
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 function register() {
     var email = document.getElementById("email").value;
