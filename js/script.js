@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { getAuth, signOut, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 import {
     getDatabase,
     ref,
@@ -40,6 +40,8 @@ const database = getDatabase();
 
 console.log(database);
 
+
+
 // skriva
 function writeUserData(message) {
     let adressRef = ref(database, "user");
@@ -69,30 +71,44 @@ loginForm.addEventListener("click", function (e) {
     var email = emailInput.value;
     var password = passwordInput.value;
     //register();
+
     if (e.target.id == "login-button"){audio.play();login(email, password);}
     else if (e.target.id == "register-button") register(email, password, "test");
+
+    if (e.target.id == "login-button") login(email, password);
+    else if (e.target.id == "register-button") register(email, password);
+
 });
 
 
 logout.addEventListener("click", function (e) {
     signOut(auth).then(() => {
         console.log("logout");
-        loginWrapper.classList.add('hide');
+        loginWrapper.classList.remove('hide');
     }).catch((error) => {
         // An error happened.
     });
 })
-
+addEventListener("load", (event) => {
+    if (user != null) {
+        
+    }
+});
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
+    
     if (user != null) {
+        console.log(user);
         console.log(user.displayName + ' already signed in')
-        loginWrapper.classList.remove('hide');
+        
+        loginWrapper.classList.add('hide');
+        
         const uid = user.uid;
     } else {
-        loginWrapper.classList.add('hide');
+        loginForm.style.visibility = "visible";
+        loginWrapper.classList.remove('hide');
         // User is signed out
         // ...
     }
@@ -102,7 +118,14 @@ function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
             // Login success
+
             loginWrapper.classList.remove('hide');
+
+            alert(user.user.email + " has signed in.");
+            loginWrapper.classList.add('hide');
+            auth.currentUser.reload();
+            username.innerText = auth.currentUser.displayName;
+
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -111,13 +134,25 @@ function login(email, password) {
         });
 }
 
-function register(email, password, displayName) {
+let username = document.querySelector(".username");
 
-    createUserWithEmailAndPassword(auth, email, displayName, password)
+function register(email, password) {
+
+    createUserWithEmailAndPassword(auth, email, password)
         .then(function (user) {
-            user.displayName = "test";
-            alert(user.user.email + " has been registred.");
-            // Send email verification
+            alert(user.displayName + " has been registred.");
+            updateProfile(auth.currentUser, {
+                displayName: "viktor",
+                photoURL: "da",
+              }).then(function() {
+                auth.currentUser.reload();
+                username.innerText = auth.currentUser.displayName;
+                
+        
+              }).catch(function(error) {
+                // An error occurred.
+              });
+         
 
         })
         .catch(function (error) {
