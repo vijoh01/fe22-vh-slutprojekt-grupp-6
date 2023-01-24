@@ -69,7 +69,7 @@ loginForm.addEventListener("click", function (e) {
     var password = passwordInput.value;
     //register();
     if (e.target.id == "login-button") login(email, password);
-    else if (e.target.id == "register-button") register(email, password);
+    else if (e.target.id == "register-button") register(email, password, "test");
 });
 
 
@@ -87,10 +87,11 @@ let currentUser = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log('user already signed in')
+        console.log(user.displayName + ' already signed in')
         loginWrapper.classList.remove('hide');
         const uid = user.uid;
     } else {
+        loginWrapper.classList.add('hide');
         // User is signed out
         // ...
     }
@@ -100,8 +101,6 @@ function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
             // Login success
-        
-            console.log(user);
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.remove('hide');
         })
@@ -112,11 +111,11 @@ function login(email, password) {
         });
 }
 
-function register(email, password) {
+function register(email, password, displayName) {
 
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, displayName, password)
         .then(function (user) {
-            currentUser = user;
+            user.displayName = "test";
             alert(user.user.email + " has been registred.");
             // Send email verification
 
