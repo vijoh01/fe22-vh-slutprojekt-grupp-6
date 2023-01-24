@@ -47,6 +47,7 @@
     --input-color: var(--clr-light-1000);
     --button-color: var(--clr-dark-accent-accent-);
     --button-text-color: var(--clr-light-1000);
+}
 
 body {
     background-color: #F5EAE0;

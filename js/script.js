@@ -33,7 +33,6 @@ const database = getDatabase();
 
 console.log(database);
 
-
 // skriva
 function writeUserData(message) {
     let adressRef = ref(database, "user");
