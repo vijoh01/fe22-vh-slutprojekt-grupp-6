@@ -39,6 +39,8 @@ const database = getDatabase();
 
 console.log(database);
 
+
+
 // skriva
 function writeUserData(message) {
     let adressRef = ref(database, "user");
@@ -76,22 +78,30 @@ loginForm.addEventListener("click", function (e) {
 logout.addEventListener("click", function (e) {
     signOut(auth).then(() => {
         console.log("logout");
-        loginWrapper.classList.add('hide');
+        loginWrapper.classList.remove('hide');
     }).catch((error) => {
         // An error happened.
     });
 })
-
+addEventListener("load", (event) => {
+    if (user != null) {
+        
+    }
+});
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
+    
     if (user != null) {
+        
         console.log(user.displayName + ' already signed in')
-        loginWrapper.classList.remove('hide');
+        loginWrapper.classList.add('hide');
+        
         const uid = user.uid;
     } else {
-        loginWrapper.classList.add('hide');
+        loginForm.style.visibility = "visible";
+        
         // User is signed out
         // ...
     }
@@ -102,7 +112,7 @@ function login(email, password) {
         .then(function (user) {
             // Login success
             alert(user.user.email + " has signed in.");
-            loginWrapper.classList.remove('hide');
+            loginWrapper.classList.add('hide');
         })
         .catch(function (error) {
             var errorCode = error.code;
