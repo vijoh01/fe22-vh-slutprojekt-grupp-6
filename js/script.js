@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import {
     getDatabase, ref, set, onValue, remove, push
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
-
+const loginWrapper = document.querySelector('#loginWrapper');
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -78,6 +78,7 @@ function login(email, password) {
             // Login success
             console.log(user);
             alert(user.user.email + " has signed in.");
+            loginWrapper.classList.add('hide');
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -113,4 +114,3 @@ function register() {
             alert(errorMessage);
         });
 }
-
