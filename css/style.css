@@ -90,14 +90,14 @@ input:focus {
     background-color: #F5EAE0;
   }
 .hide {
-  display:none!important;
+  display:flex!important;
 }
 #loginWrapper {
   height:100%;
   width:100%;
   position: absolute;
   background-color: #F5EAE0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
