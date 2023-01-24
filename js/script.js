@@ -70,59 +70,17 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
-
-/*
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-const sessionCookie = getCookie("session");
-
-// Check if the user is already signed in
-if (sessionCookie) {
-  // User is already signed in
-  signInWithCredential(OAuthCredential.fromJSON(sessionCookie))
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    console.log(user);
-    console.log('signed in?')
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('user already signed in')
+    loginWrapper.classList.add('hide');
+    const uid = user.uid;
+  } else {
+    // User is signed out
     // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage);
-    console.log('didnt work');
-    // ...
-  });
-} else {
-  // User is not signed in
-  console.log("User is not signed in.");
-}
-
-function setCookie(name, value, days) {
-  let expires = "";
-  if (days) {
-    let date = new Date();
-    date.setTime(date.getTime() + (days*24*60*60*1000));
-    expires = "; expires=" + date.toUTCString();
   }
-  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-*/
+});
+
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
@@ -130,15 +88,6 @@ function login(email, password) {
             console.log(user);
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.add('hide');
-            //cookies
-            user.user.getIdToken().then(function (idToken) {
-            const sessionCookie = {
-              "idToken": idToken,
-              "expiresIn": "3600",
-              "refreshToken": user.refreshToken
-            };
-            setCookie("session", JSON.stringify(sessionCookie), 1);
-          })
             })
         .catch(function (error) {
             var errorCode = error.code;
@@ -146,21 +95,6 @@ function login(email, password) {
             alert(errorMessage);
         });
 }
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log(
-      'user already signed in'
-    )
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
 
 function register() {
     var email = document.getElementById("email").value;
