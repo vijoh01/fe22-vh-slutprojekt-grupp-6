@@ -95,6 +95,8 @@ if (sessionCookie) {
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
+    console.log(user);
+    console.log('signed in?')
     // ...
   })
   .catch((error) => {
