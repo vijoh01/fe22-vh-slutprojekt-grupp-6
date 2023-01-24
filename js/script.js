@@ -45,6 +45,8 @@ function writeUserData(message) {
     });
 }
 
+let signUp = false;
+
 writeUserData("SUPP DOG!!!");
 
 // läsa en specifik onValue direkt + när den ändrar value
@@ -55,10 +57,15 @@ onValue(urlRef, (snapshot) => {
 });
 
 var loginForm = document.getElementById("login-form");
+var loginTitle = document.querySelector(".login-title");
 var emailInput = document.getElementById("email");
+var userInput = document.getElementById("username");
 var passwordInput = document.getElementById("password");
 var logout = document.getElementById("logout");
+var loginBtn = document.getElementById("login-button");
+var navBtn = document.getElementById("nav-button");
 
+userInput.classList.add('hide');
 loginForm.addEventListener("click", function (e) {
     e.preventDefault();
     var email = emailInput.value;
@@ -66,14 +73,31 @@ loginForm.addEventListener("click", function (e) {
     //register();
 
     if (e.target.id == "login-button"){
+        if (!signUp) {
         audio.play();
-        login(email, password);
+            login(email, password); 
+        } else {
+            register(email, userInput.value,password); 
+        }
     }
 
-    else if (e.target.id == "register-button") register(email, password, "test");
-
-    if (e.target.id == "login-button") login(email, password);
-    else if (e.target.id == "register-button") register(email, password);
+    else if (e.target.id == "nav-button") {
+        if (signUp) {
+            userInput.classList.add('hide');
+            loginBtn.innerText = "Sign In";
+            navBtn.innerText = "Create Account";
+            loginTitle.innerText = "Login";
+            console.log("test");
+            signUp = false;
+        } else {
+        userInput.classList.remove('hide');
+        loginTitle.innerText = "Register";
+        loginBtn.innerText = "Register";
+        navBtn.innerText = "Back to Sign In";
+        signUp = true;
+        }
+        
+    }
 
 });
 
@@ -101,7 +125,7 @@ onAuthStateChanged(auth, (user) => {
         console.log(user.displayName + ' already signed in')
         
         loginWrapper.classList.add('hide');
-        
+        username.innerText = auth.currentUser.displayName;
         const uid = user.uid;
     } else {
         loginForm.style.visibility = "visible";
@@ -132,13 +156,12 @@ function login(email, password) {
 
 let username = document.querySelector(".username");
 
-function register(email, password) {
+function register(email, user, password) {
 
     createUserWithEmailAndPassword(auth, email, password)
-        .then(function (user) {
-            alert(user.displayName + " has been registred.");
+        .then(function () {
             updateProfile(auth.currentUser, {
-                displayName: "viktor",
+                displayName: user,
                 photoURL: "da",
               }).then(function() {
                 auth.currentUser.reload();

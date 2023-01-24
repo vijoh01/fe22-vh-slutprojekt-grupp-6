@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.13.0//firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.13.0//firebase-auth.js"></script>
 
-    <script src="./js/script.js" type="module" defer></script>
+  <script src="./js/script.js" type="module" defer></script>
 
-    <title>Document</title>
+  <title>Document</title>
 </head>
+
 <body>
   <div id="loginWrapper">
-  <form id="login-form">
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password"></br>
-    <button type="submit" id="login-button">Login</button>
-    <button type="submit" id="register-button">Register</button>
-  </form>
+    <div class="login-container">
+      <img src="./imgs/logo.png" style="width:10rem;" alt="">
+      <h1 class="login-title">Login</h1>
+      <form id="login-form">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password"></br>
+        <button type="submit" id="login-button">Login</button>
+        <button type="submit" id="nav-button">Create Account</button>
+      </form>
+    </div>
   </div>
   <!--<form id="textform">
     <textarea rows="4" cols="50" maxlength="280"></textarea> <br>
     <button type="submit" id="submit-button">submit</button>
   </form>-->
   <p class="username"></p>
-    <div class="container">
-        <div class="search-container">
-          <input type="text" placeholder="Sök.." class="search-bar">
-          <button type="submit" class="btn">Sök</button>
-        </div>
-        <div class="card-container">
-          <div class="card">Card 1</div>
-          <div class="card">Card 2</div>
-          <div class="card">Card 3</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 5</div>
-          <div class="card">Card 6</div>
-          <div class="card">Card 7</div>
-          <div class="card">Card 8</div>
-          <div class="card">Card 9</div>
-        </div>
+  <div class="container">
+    <div class="search-container">
+      <input type="text" placeholder="Sök.." class="search-bar">
+      <button type="submit" class="btn">Sök</button>
     </div>
-    <button id="logout">Logout</button>
+    <div class="card-container">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+      <div class="card">Card 3</div>
+      <div class="card">Card 4</div>
+      <div class="card">Card 5</div>
+      <div class="card">Card 6</div>
+      <div class="card">Card 7</div>
+      <div class="card">Card 8</div>
+      <div class="card">Card 9</div>
+    </div>
+  </div>
+  <button id="logout">Logout</button>
 </body>
+
 </html>
