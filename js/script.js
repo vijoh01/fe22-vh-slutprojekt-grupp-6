@@ -10,6 +10,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
 
 const loginWrapper = document.querySelector('#loginWrapper');
+const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
 
 // Your web app's Firebase configuration
@@ -70,8 +71,13 @@ loginForm.addEventListener("click", function (e) {
     var email = emailInput.value;
     var password = passwordInput.value;
     //register();
+
+    if (e.target.id == "login-button"){audio.play();login(email, password);}
+    else if (e.target.id == "register-button") register(email, password, "test");
+
     if (e.target.id == "login-button") login(email, password);
     else if (e.target.id == "register-button") register(email, password);
+
 });
 
 
@@ -112,10 +118,14 @@ function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
             // Login success
+
+            loginWrapper.classList.remove('hide');
+
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.add('hide');
             auth.currentUser.reload();
             username.innerText = auth.currentUser.displayName;
+
         })
         .catch(function (error) {
             var errorCode = error.code;
