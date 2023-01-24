@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { getAuth, signOut, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 import {
     getDatabase,
     ref,
@@ -71,7 +71,7 @@ loginForm.addEventListener("click", function (e) {
     var password = passwordInput.value;
     //register();
     if (e.target.id == "login-button") login(email, password);
-    else if (e.target.id == "register-button") register(email, password, "test");
+    else if (e.target.id == "register-button") register(email, password);
 });
 
 
@@ -94,14 +94,15 @@ let currentUser = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
     
     if (user != null) {
-        
+        console.log(user);
         console.log(user.displayName + ' already signed in')
+        
         loginWrapper.classList.add('hide');
         
         const uid = user.uid;
     } else {
         loginForm.style.visibility = "visible";
-        
+        loginWrapper.classList.remove('hide');
         // User is signed out
         // ...
     }
@@ -113,6 +114,8 @@ function login(email, password) {
             // Login success
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.add('hide');
+            auth.currentUser.reload();
+            username.innerText = auth.currentUser.displayName;
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -121,13 +124,25 @@ function login(email, password) {
         });
 }
 
-function register(email, password, displayName) {
+let username = document.querySelector(".username");
 
-    createUserWithEmailAndPassword(auth, email, displayName, password)
+function register(email, password) {
+
+    createUserWithEmailAndPassword(auth, email, password)
         .then(function (user) {
-            user.displayName = "test";
-            alert(user.user.email + " has been registred.");
-            // Send email verification
+            alert(user.displayName + " has been registred.");
+            updateProfile(auth.currentUser, {
+                displayName: "viktor",
+                photoURL: "da",
+              }).then(function() {
+                auth.currentUser.reload();
+                username.innerText = auth.currentUser.displayName;
+                
+        
+              }).catch(function(error) {
+                // An error occurred.
+              });
+         
 
         })
         .catch(function (error) {

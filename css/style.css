@@ -104,27 +104,26 @@ input:focus {
 }
 
 #login-form {
-  max-width:336px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  
   visibility: hidden;
 }
 
 #login-form input {
-  padding: 1rem;
-  margin: 1rem;
+  height: 3rem;
+  margin: 0.3rem 0 0.3rem 0;
 }
 
 #login-form button {
-  padding: 1rem;
-  max-width: 150px;
-  margin: 1rem;
+  margin: 0.3rem 0 0.3rem 0;
+  height: 2rem;
 }
 
   textarea {
     resize: none;
   }
-
-
 
 body {
   background-color: #F5EAE0;
