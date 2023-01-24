@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential, OAuthCredential } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential, OAuthCredential, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 import {
     getDatabase, ref, set, onValue, remove, push
@@ -110,6 +110,15 @@ if (sessionCookie) {
   // User is not signed in
   console.log("User is not signed in.");
 }
+
+onAuthStateChanged(function(user) {
+  if (user) {
+    console.log('user already signed in')
+    // User is signed in.
+  } else {
+    // No user is signed in.
+  }
+});
 
 function setCookie(name, value, days) {
   let expires = "";
