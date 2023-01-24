@@ -102,6 +102,8 @@ if (sessionCookie) {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log(errorMessage);
+    console.log('didnt work');
     // ...
   });
 } else {
