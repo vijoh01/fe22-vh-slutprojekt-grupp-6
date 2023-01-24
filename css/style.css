@@ -118,27 +118,11 @@ input:focus {
   margin: 1rem;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .search-container {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-
-  }
-
   textarea {
     resize: none;
   }
 
 
-  input:focus {
-    outline: none !important;
-}
 
 body {
   background-color: #F5EAE0;
@@ -245,10 +229,9 @@ input:focus {
   }
 }
 
-
-
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .card {
       flex-basis: calc(50% - 20px);
     }
   }
+}

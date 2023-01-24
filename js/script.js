@@ -74,19 +74,6 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
-function login(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then(function (user) {
-      // Login success
-      console.log(user);
-      alert(user.user.email + " has signed in.");
-    })
-    .catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage);
-    });
-}
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -99,6 +86,20 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+function login(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+        .then(function (user) {
+            // Login success
+            console.log(user);
+            alert(user.user.email + " has signed in.");
+            loginWrapper.classList.add('hide');
+            })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+        });
+}
 
 function register() {
   var email = document.getElementById("email").value;
