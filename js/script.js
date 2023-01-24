@@ -91,12 +91,17 @@ const sessionCookie = getCookie("__session");
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
-  let user = auth.currentUser;
-  if (user) {
-    console.log("User is signed in:", user.email);
-  } else {
-    console.log("No user is signed in.");
-  }
+  signInWithCustomToken(auth, sessionCookie)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ...
+  });
 } else {
   // User is not signed in
   console.log("User is not signed in.");
