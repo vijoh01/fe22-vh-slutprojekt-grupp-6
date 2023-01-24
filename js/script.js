@@ -70,13 +70,28 @@ loginForm.addEventListener("click", function (e) {
 
 const auth = getAuth();
 
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
-var sessionCookie = getCookie("__session");
+const sessionCookie = getCookie("__session");
 
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
-  var user = firebase.auth().currentUser;
+  let user = firebase.auth().currentUser;
   if (user) {
     console.log("User is signed in:", user.email);
   } else {
