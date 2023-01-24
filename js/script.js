@@ -86,7 +86,7 @@ function getCookie(cname) {
   return "";
 }
 
-const sessionCookie = getCookie("__session");
+const sessionCookie = getCookie("session");
 
 // Check if the user is already signed in
 if (sessionCookie) {
@@ -109,6 +109,15 @@ if (sessionCookie) {
   console.log("User is not signed in.");
 }
 
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
 
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
@@ -119,7 +128,12 @@ function login(email, password) {
             loginWrapper.classList.add('hide');
             //cookies
             user.user.getIdToken().then(function (idToken) {
-            document.cookie = '__session=' + idToken + ';max-age=36000';
+            const sessionCookie = {
+              "idToken": idToken,
+              "expiresIn": "3600",
+              "refreshToken": user.refreshToken
+            };
+            setCookie("session", JSON.stringify(sessionCookie), 1);
           })
             })
         .catch(function (error) {
