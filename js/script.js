@@ -12,7 +12,6 @@ import {
 const loginWrapper = document.querySelector('#loginWrapper');
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     databaseURL:
@@ -31,16 +30,12 @@ const firebaseConfig = {
     appId: "1:957844540887:web:b31870f3a4d046dd3d4f92",
 };
 
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 console.log(app);
 const database = getDatabase();
 
 console.log(database);
-
-
 
 // skriva
 function writeUserData(message) {
@@ -64,15 +59,17 @@ var emailInput = document.getElementById("email");
 var passwordInput = document.getElementById("password");
 var logout = document.getElementById("logout");
 
-
-
 loginForm.addEventListener("click", function (e) {
     e.preventDefault();
     var email = emailInput.value;
     var password = passwordInput.value;
     //register();
 
-    if (e.target.id == "login-button"){audio.play();login(email, password);}
+    if (e.target.id == "login-button"){
+        audio.play();
+        login(email, password);
+    }
+
     else if (e.target.id == "register-button") register(email, password, "test");
 
     if (e.target.id == "login-button") login(email, password);
@@ -120,8 +117,7 @@ function login(email, password) {
             // Login success
 
             loginWrapper.classList.remove('hide');
-
-            alert(user.user.email + " has signed in.");
+       
             loginWrapper.classList.add('hide');
             auth.currentUser.reload();
             username.innerText = auth.currentUser.displayName;
