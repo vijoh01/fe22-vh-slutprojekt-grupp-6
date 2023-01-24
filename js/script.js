@@ -87,7 +87,7 @@ function getCookie(cname) {
 }
 
 const sessionCookie = getCookie("session");
-
+/*
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
@@ -110,13 +110,19 @@ if (sessionCookie) {
   // User is not signed in
   console.log("User is not signed in.");
 }
-
-auth.onAuthStateChanged(function(user) {
+*/
+onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log('user already signed in')
-    // User is signed in.
+    console.log(
+      'user already signed in'
+    )
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    // ...
   } else {
-    // No user is signed in.
+    // User is signed out
+    // ...
   }
 });
 
