@@ -82,7 +82,7 @@ function login(email, password) {
             //cookies
             return user.getIdToken().then(idToken = > {
             const csrfToken = getCookie('csrfToken');
-            document.cookie = '__session=' + token + ';max-age=36000';
+            document.cookie = '__session=' + csrfToken + ';max-age=36000';
           })
             })
         .catch(function (error) {
