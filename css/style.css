@@ -1,52 +1,91 @@
 body {
-    background-color: #F5EAE0; 
-  }
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .search-container {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .search-bar {
-    border-radius: 20px;
-    border: 0;
-    padding: 10px;
-
-  }
-
-
-  input:focus {
-    outline: none !important;
+  background-color: #f5eae0;
 }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    column-gap: 30px;
-    row-gap: 10px;
-  }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.search-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  border-radius: 20px;
+  border: 0;
+  padding: 10px;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 30px;
+  row-gap: 10px;
+}
+
+.card {
+  flex-basis: 25%;
+  background-color: #fdfaf4;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #ccc;
+  height: 168px;
+  width: 336px;
+  margin: 1%;
+}
+
+@media only screen and (max-width: 600px) {
   .card {
-    flex-basis: 25%;
-    background-color: #FDFAF4;
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 2px 2px 5px #ccc;
-    height: 168px ;
-    width: 336px;
-    margin: 1%;
+    flex-basis: calc(50% - 20px);
   }
+}
 
-  
-  @media only screen and (max-width: 600px) {
-    .card {
-      flex-basis: calc(50% - 20px); 
-    }
+/* DANYS FEATURE */
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
+
+#danyBtn {
+  font-family: "Aboreto", sans-serif;
+  background-color: black;
+  color: white;
+  border: 5px solid rgb(151, 3, 3);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#danyBtn:hover {
+  filter: grayscale(1);
+}
+
+#danyh4 {
+  font-family: "Aboreto", sans-serif;
+  transition: 5s;
+  margin: 5px;
+  padding: 0;
+  text-decoration: line-through overline underline rgb(151, 3, 3);
+  font-size: 35px;
+}
+
+.hidden {
+  display: none;
+}
+
+.fadeInText {
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
