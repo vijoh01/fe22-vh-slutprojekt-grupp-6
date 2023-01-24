@@ -79,7 +79,11 @@ function login(email, password) {
             console.log(user);
             alert(user.user.email + " has signed in.");
             loginWrapper.classList.add('hide');
-        })
+            //cookies
+            firebase.auth().currentUser.getIdToken(true).then(function (token) {
+                    document.cookie = '__session=' + token + ';max-age=36000';
+                    })
+            })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
