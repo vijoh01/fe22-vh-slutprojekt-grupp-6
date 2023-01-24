@@ -66,11 +66,10 @@ var logout = document.getElementById("logout");
 
 loginForm.addEventListener("click", function (e) {
     e.preventDefault();
-    audio.play()
     var email = emailInput.value;
     var password = passwordInput.value;
     //register();
-    if (e.target.id == "login-button") login(email, password);
+    if (e.target.id == "login-button"){audio.play();login(email, password);}
     else if (e.target.id == "register-button") register(email, password, "test");
 });
 
@@ -103,7 +102,6 @@ function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
             // Login success
-            alert(user.user.email + " has signed in.");
             loginWrapper.classList.remove('hide');
         })
         .catch(function (error) {
