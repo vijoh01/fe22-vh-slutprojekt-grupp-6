@@ -91,7 +91,7 @@ const sessionCookie = getCookie("__session");
 // Check if the user is already signed in
 if (sessionCookie) {
   // User is already signed in
-  let user = auth().currentUser;
+  let user = auth.currentUser;
   if (user) {
     console.log("User is signed in:", user.email);
   } else {
