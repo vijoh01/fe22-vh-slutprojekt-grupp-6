@@ -6,7 +6,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import {
     getDatabase, ref, set, onValue, remove, push
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js";
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 
 // Your web app's Firebase configuration
