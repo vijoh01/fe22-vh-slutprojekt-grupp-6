@@ -71,6 +71,22 @@ loginForm.addEventListener("click", function (e) {
 const auth = getAuth();
 
 
+var sessionCookie = getCookie("__session");
+
+// Check if the user is already signed in
+if (sessionCookie) {
+  // User is already signed in
+  var user = firebase.auth().currentUser;
+  if (user) {
+    console.log("User is signed in:", user.email);
+  } else {
+    console.log("No user is signed in.");
+  }
+} else {
+  // User is not signed in
+  console.log("User is not signed in.");
+}
+
 
 function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
