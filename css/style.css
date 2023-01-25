@@ -248,7 +248,7 @@ header {
 }
 
 
-#post {
+#post, #search {
   height: 2.5rem;
   border-radius: 20rem;
   border: 0;
@@ -370,4 +370,33 @@ input:focus {
   }
 
   
+}
+
+#postBox {
+  margin:2rem;
+}
+
+#textform {
+  outline: 1px solid black;
+  padding-left: 1.5rem;
+  margin-right: 5rem;
+  border-radius: 1rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#textform button {
+  height: 2.5rem;
+  border-radius: 20rem;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  background-color: var(--clr-accent-);
+  width: 10rem;
+  border: 2px white solid;
+  margin: 0 1.5rem 0 1.5rem;
+  cursor: pointer;
 }

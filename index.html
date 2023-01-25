@@ -60,9 +60,21 @@
         <input type="text" placeholder="Sök.." class="search-bar">
         <button type="submit" class="material-symbols-outlined">search</button>
       </div>
+      <div id="postBox" class="hide">
+        <form id="textform">
+          <textarea rows="6" cols="40" maxlength="280"></textarea>
+          <button type="submit" id="submit-button">Post</button>
+        </form>
+      </div>
+
       <button type="submit" id="post">
         <h3>Publish</h3>
         <div class="material-symbols-outlined">add</div>
+      </button>
+
+      <button type="submit" id="search" class="hide">
+        <h3>Search</h3>
+        <div class="material-symbols-outlined">search</div>
       </button>
 
     </div>

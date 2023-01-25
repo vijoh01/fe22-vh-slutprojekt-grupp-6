@@ -65,6 +65,25 @@ var passwordInput = document.getElementById("password");
 var logout = document.getElementById("logout");
 var loginBtn = document.getElementById("login-button");
 var navBtn = document.getElementById("nav-button");
+const post = document.querySelector('#post');
+const postBox = document.querySelector('#postBox');
+const searchField = document.querySelector('.search-field');
+const searchBtn = document.querySelector('#search');
+
+
+post.addEventListener('click', function(){
+    postBox.classList.remove('hide');
+    searchField.classList.add('hide');
+    searchBtn.classList.remove('hide');
+    post.classList.add('hide');
+})
+
+searchBtn.addEventListener('click', function(){
+    searchBtn.classList.add('hide');
+    postBox.classList.add('hide');
+    post.classList.remove('hide');
+    searchField.classList.remove('hide');
+})
 
 userInput.classList.add('hide');
 loginForm.addEventListener("click", function (e) {
