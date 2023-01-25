@@ -12,4 +12,4 @@
 
 ![bild](https://user-images.githubusercontent.com/76432491/214717515-f615ddec-a6a0-4e63-9670-b2cca82facf6.png)
 
-### Lycka till och uttryck dig precis hur du vill!
+### Lycka till och uttryck dig med din kod precis hur du vill!
