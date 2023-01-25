@@ -294,7 +294,7 @@ input:focus {
   justify-content: center;
   column-gap: 30px;
   row-gap: 10px;
-  
+  padding-top: 2rem;
 }
 
 .card {
