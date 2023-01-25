@@ -306,6 +306,7 @@ input:focus {
   overflow: hidden;
   height: auto;
   word-wrap: break-word;
+  max-width: 60rem;
   margin: 1%;
   
 }
