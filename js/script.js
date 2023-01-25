@@ -65,6 +65,49 @@ var passwordInput = document.getElementById("password");
 var logout = document.getElementById("logout");
 var loginBtn = document.getElementById("login-button");
 var navBtn = document.getElementById("nav-button");
+const post = document.querySelector('#post');
+const postBox = document.querySelector('#postBox');
+const searchField = document.querySelector('.search-field');
+const searchBtn = document.querySelector('#search');
+const displayNameP = document.querySelector('#displayName p')
+const profileBtn = document.querySelector('.material-symbols-outlined');
+const displayProfileBtn = document.querySelector('.username');
+const profileWrapper = document.querySelector('#profileWrapper');
+const displayNameChange = document.querySelector('#displayNameChange');
+const newDisplayName = document.querySelector('#newDisplayName');
+const xProfile = document.querySelector('#xProfile');
+
+displayNameP.addEventListener('click', function(){
+    displayNameP.classList.add('hide');
+    displayNameChange.classList.remove('hide');
+    newDisplayName.setAttribute('placeholder', displayNameP.innerText);
+});
+
+profileBtn.addEventListener('click', function(){
+    profileWrapper.classList.remove('hide');
+});
+
+displayProfileBtn.addEventListener('click', function(){
+    profileWrapper.classList.remove('hide');
+});
+
+xProfile.addEventListener('click', function(){
+    profileWrapper.classList.add('hide');
+})
+
+post.addEventListener('click', function(){
+    postBox.classList.remove('hide');
+    searchField.classList.add('hide');
+    searchBtn.classList.remove('hide');
+    post.classList.add('hide');
+});
+
+searchBtn.addEventListener('click', function(){
+    searchBtn.classList.add('hide');
+    postBox.classList.add('hide');
+    post.classList.remove('hide');
+    searchField.classList.remove('hide');
+});
 
 userInput.classList.add('hide');
 loginForm.addEventListener("click", function (e) {
@@ -103,7 +146,7 @@ loginForm.addEventListener("click", function (e) {
 });
 dropdown.classList.add('hide');
 logout.addEventListener("click", function (e) {
-    
+    profileWrapper.classList.add('hide');
     signOut(auth).then(() => {
         console.log("logout");
         dropdown.classList.add('hide');
@@ -116,6 +159,21 @@ logout.addEventListener("click", function (e) {
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
+displayNameChange.addEventListener('submit', function(){
+    let newName = newDisplayName.value;
+    profileWrapper.classList.add('hide');
+    updateProfile(auth.currentUser, {
+        displayName: newName
+      }).then(() => {
+        // Profile updated!
+        // ...
+      }).catch((error) => {
+        // An error occurred
+        // ...
+      });
+})
+
+
 onAuthStateChanged(auth, (user) => {
     
     if (user != null) {
@@ -125,6 +183,8 @@ onAuthStateChanged(auth, (user) => {
         loginWrapper.classList.add('hide');
         username.innerText = auth.currentUser.displayName;
         const uid = user.uid;
+        displayNameP.innerText = auth.currentUser.displayName;
+        console.log(auth.currentUser.displayName);
     } else {
         loginForm.style.visibility = "visible";
         loginWrapper.classList.remove('hide');
@@ -144,7 +204,7 @@ function login(email, password) {
             loginWrapper.classList.add('hide');
             auth.currentUser.reload();
             username.innerText = auth.currentUser.displayName;
-
+            displayNameP.innerText = auth.currentUser.displayName;
         })
         .catch(function (error) {
             var errorCode = error.code;

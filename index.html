@@ -32,6 +32,28 @@
       </form>
     </div>
   </div>
+  <div id="profileWrapper" class="hide">
+    <div class="profile-container">
+      <p style="font-size: 2rem;margin:2rem;" id="xProfile">X</p>
+      <h1 class="profile-title">Profile</h1>
+      <h2 id="displayName" style="margin:2rem;">
+        Display name: <p style="display: inline;"></p>
+        <form id="displayNameChange" class="hide">
+          <input type="text" id="newDisplayName"/>
+          <input type="submit" hidden />
+        </form>
+      </h2>
+      <!--
+      <form id="login-form">
+        <input type="email" id="email" placeholder="Email">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password"></br>
+        <button type="submit" id="login-button">Login</button>
+        <button type="submit" id="nav-button">Create Account</button>
+      </form>
+      -->
+    </div>
+  </div>
   <!--<form id="textform">
     <textarea rows="4" cols="50" maxlength="280"></textarea> <br>
     <button type="submit" id="submit-button">submit</button>
@@ -60,9 +82,21 @@
         <input type="text" placeholder="Sök.." class="search-bar">
         <button type="submit" class="material-symbols-outlined">search</button>
       </div>
+      <div id="postBox" class="hide">
+        <form id="textform">
+          <textarea rows="6" cols="40" maxlength="280"></textarea>
+          <button type="submit" id="submit-button">Post</button>
+        </form>
+      </div>
+
       <button type="submit" id="post">
         <h3>Publish</h3>
         <div class="material-symbols-outlined">add</div>
+      </button>
+
+      <button type="submit" id="search" class="hide">
+        <h3>Search</h3>
+        <div class="material-symbols-outlined">search</div>
       </button>
 
     </div>
