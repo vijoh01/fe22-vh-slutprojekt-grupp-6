@@ -1,4 +1,4 @@
-# Policy
+# Contribution Policy
 
 * För att implementera features i MsgBoard vänligen gör det inom fliken "Random".
 
@@ -12,4 +12,4 @@ Ni skriver koden inom den kommenterade ramen i filerna.
 
 ![bild](https://user-images.githubusercontent.com/76432491/214717515-f615ddec-a6a0-4e63-9670-b2cca82facf6.png)
 
-# Lycka till och uttryck dig precis hur du vill! :D
+### Lycka till och uttryck dig precis hur du vill!
