@@ -57,6 +57,7 @@ onValue(urlRef, (snapshot) => {
 });
 
 var loginForm = document.getElementById("login-form");
+var dropdown = document.querySelector(".dropdown");
 var loginTitle = document.querySelector(".login-title");
 var emailInput = document.getElementById("email");
 var userInput = document.getElementById("username");
@@ -100,21 +101,18 @@ loginForm.addEventListener("click", function (e) {
     }
 
 });
-
-
+dropdown.classList.add('hide');
 logout.addEventListener("click", function (e) {
+    
     signOut(auth).then(() => {
         console.log("logout");
+        dropdown.classList.add('hide');
         loginWrapper.classList.remove('hide');
     }).catch((error) => {
         // An error happened.
     });
 })
-addEventListener("load", (event) => {
-    if (user != null) {
-        
-    }
-});
+
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
@@ -123,13 +121,14 @@ onAuthStateChanged(auth, (user) => {
     if (user != null) {
         console.log(user);
         console.log(user.displayName + ' already signed in')
-        
+        dropdown.classList.remove('hide');
         loginWrapper.classList.add('hide');
         username.innerText = auth.currentUser.displayName;
         const uid = user.uid;
     } else {
         loginForm.style.visibility = "visible";
         loginWrapper.classList.remove('hide');
+        dropdown.classList.add('hide');
         // User is signed out
         // ...
     }
@@ -139,7 +138,7 @@ function login(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then(function (user) {
             // Login success
-
+            dropdown.classList.remove('hide');
             loginWrapper.classList.remove('hide');
        
             loginWrapper.classList.add('hide');
@@ -166,7 +165,7 @@ function register(email, user, password) {
               }).then(function() {
                 auth.currentUser.reload();
                 username.innerText = auth.currentUser.displayName;
-                
+                dropdown.classList.remove('hide');
         
               }).catch(function(error) {
                 // An error occurred.

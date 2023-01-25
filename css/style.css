@@ -51,27 +51,57 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@200&family=Source+Code+Pro:wght@300;600;900&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Sofia Sans', 'Courier New', Courier, monospace;
   background-color: #f5eae0;
+  overflow: hidden;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.dropbtn {
+  
+  color: white;
+  font-size: 16px;
+  border: none;
 }
 
-.search-container {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
+.dropdown{
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  cursor: pointer;
 }
 
-.search-bar {
-  border-radius: 20px;
-  border: 0;
-  padding: 10px;
+.dropdown-content {
+  display: none;
+  
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 8rem;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  transform: translateY(3rem) translateX(-1rem);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.icon-tab {
+  margin: 0 1.5rem 0 1.5rem;
+  align-self: flex-end;
 }
 
 input:focus {
@@ -84,6 +114,11 @@ input:focus {
   justify-content: center;
   column-gap: 30px;
   row-gap: 10px;
+}
+
+#logout {
+  display: flex;
+  align-items: center;
 }
 
 .card {
@@ -101,7 +136,7 @@ input:focus {
   height: 100%;
   width: 100%;
   position: absolute;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(30px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,7 +146,7 @@ input:focus {
 #login-form {
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 18rem;
 
   visibility: hidden;
 }
@@ -129,6 +164,7 @@ input:focus {
   background-color: var(--clr-accent-);
   color: white;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #login-form button:last-child {
@@ -151,10 +187,6 @@ textarea {
   resize: none;
 }
 
-body {
-  background-color: #F5EAE0;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -163,16 +195,84 @@ body {
 
 .search-container {
   width: 100%;
+  height: 100%;
   text-align: center;
-  margin-bottom: 20px;
+  background-color: #27232E;
+  padding: 1.5rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2.5rem;
+  color: white;
+  
+  
 }
 
-.search-bar {
+.nav {
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-container .search-bar {
+  min-width: 15rem;
+  max-width: 20rem;
+  
   border-radius: 20px;
   border: 0;
-  padding: 10px;
-
 }
+
+header {
+  background-color: #27232E;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.search-field button {
+  cursor: pointer;
+}
+
+.search-container .search-field {
+  outline: 1px solid black;
+  
+  padding-left: 1.5rem;
+  margin-right: 5rem;
+  border-radius: 20rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+#post {
+  height: 2.5rem;
+  border-radius: 20rem;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  background-color: var(--clr-accent-);
+  width: 10rem;
+  border: 2px white solid;
+  margin: 0 1.5rem 0 1.5rem;
+  cursor: pointer;
+}
+
+.search-container .search-field button {
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 20rem;
+  border: 0;
+  width: 3.5rem;
+  background-color: var(--clr-accent-);
+  color: white;
+  border: 2px white solid;
+}
+
 
 .card-container {
   display: flex;
@@ -258,5 +358,15 @@ input:focus {
 @media only screen and (max-width: 600px) {
   .card {
     flex-basis: calc(50% - 20px);
+    
   }
+
+  body {
+    overflow: hidden;
+  }
+  .login-container {
+    
+  }
+
+  
 }
