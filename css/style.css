@@ -54,12 +54,13 @@
 * {
   margin: 0;
   padding: 0;
+  
 }
 
 body {
   font-family: 'Sofia Sans', 'Courier New', Courier, monospace;
   background-color: #f5eae0;
-  overflow: hidden;
+ 
 }
 
 .dropbtn {
@@ -122,12 +123,7 @@ input:focus {
   align-items: center;
 }
 
-.card {
-  flex-basis: 25%;
-  background-color: #fdfaf4;
 
-  background-color: #F5EAE0;
-}
 
 .hide {
   display: none !important;
@@ -288,15 +284,6 @@ header {
   border: 2px white solid;
 }
 
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 30px;
-  row-gap: 10px;
-}
-
 input:focus {
   outline: none !important;
 }
@@ -307,18 +294,20 @@ input:focus {
   justify-content: center;
   column-gap: 30px;
   row-gap: 10px;
+  
 }
 
 .card {
   flex-basis: 25%;
   background-color: #FDFAF4;
-
   border-radius: 20px;
   padding: 10px;
   box-shadow: 2px 2px 5px #ccc;
-  height: 168px;
-  width: 336px;
+  overflow: hidden;
+  height: auto;
+  word-wrap: break-word;
   margin: 1%;
+  
 }
 
 @media only screen and (max-width: 600px) {
