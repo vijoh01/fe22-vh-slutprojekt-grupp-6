@@ -156,7 +156,7 @@ body {
     min-width: 8rem;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    transform: translateY(4.6rem) translateX(-1rem);
+    transform: translateY(3rem) translateX(-1rem);
 }
 
 .dropdown-content a {
