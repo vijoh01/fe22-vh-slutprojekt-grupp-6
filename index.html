@@ -4,20 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="icon" type="image/x-icon" href="./imgs/logo-white.gif">
-
   <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.13.0//firebase-auth.js"></script>
-
   <script src="./js/script.js" type="module" defer></script>
-
-  <title>Document</title>
+  <title>MsgBoard</title>
 </head>
-
 <body>
   <div id="loginWrapper">
     <div class="login-container">
@@ -54,14 +50,15 @@
 
     <div class="search-container">
       <div class="nav">
-        <img src="./imgs/logo-white.gif" style="width:5rem; " alt="">
+        <img class="logo" src="./imgs/logo-white.gif" alt="">
+
         <div  class="icon-tab">
           
-     
           <div class="dropdown" style="display: flex; align-items: center;">
             <div class="material-symbols-outlined">account_circle</div>
             <p class="username" style="margin-left: 0.5rem;"></p>
             <div class="dropdown-content">
+            <a href="./random/random.html" id="random"><span class="material-symbols-outlined">Diversity_3</span>Random</a>
             <a id="logout"><span class="material-symbols-outlined">logout</span>Logout</a>
           </div>
           </div>
@@ -70,38 +67,33 @@
       </div>
 
       <div class="search-field">
-        <input type="text" placeholder="Sök.." class="search-bar">
-        <button type="submit" class="material-symbols-outlined">search</button>
+        <input class="search-input" type="text" placeholder="Sök.." class="search-bar">
+        <button type="submit" class="search-btn" class="material-symbols-outlined"><div class="material-symbols-outlined">search</div></button>
       </div>
-      <div id="postBox" class="hide">
-        <form id="textform">
-          <textarea rows="6" cols="40" maxlength="280"></textarea>
-          <button type="submit" id="submit-button">Post</button>
-        </form>
-      </div>
+      
 
       <button type="submit" id="post">
-        <h3>Publish</h3>
+        <p>Publish</p>
         <div class="material-symbols-outlined">add</div>
       </button>
 
-      <button type="submit" id="search" class="hide">
-        <h3>Search</h3>
-        <div class="material-symbols-outlined">search</div>
-      </button>
+    </div>
 
+    <div class="background-mobile-button">
+      <button type="submit" id="mobile-post" hidden>
+        <div class="material-symbols-outlined">add</div>
+      </button>
+    </div>
+
+    <div id="postBox" class="hide">
+      <form id="textform">
+        <div class="top-icons"><span id="close-post" class="material-symbols-outlined">close</span><h1>Post</h1><div></div></div>
+        <textarea id="post-text" placeholder="What a beautiful day."></textarea>
+        <button type="button" id="submit-button">Publish<span class="material-symbols-outlined">publish</span></button>
+      </form>
     </div>
     <div class="card-container">
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-      <div class="card">Card 3</div>
-      <div class="card">Card 4</div>
-      <div class="card">Card 5</div>
-      <div class="card">Card 6</div>
-      <div class="card">Card 7</div>
-      <div class="card">Card 8</div>
-      <div class="card">Card 9</div>
-
+    
     </div>
   </div>
 </body>

@@ -1,0 +1,188 @@
+/*       - CSS - Varsågod och ta för dig! -      */
+
+.random-container {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------*/
+
+:root {
+    --clr-dark-100-: #393B5F;
+    --clr-dark-200-: #545379;
+    --clr-dark-300-: #685E7D;
+    --clr-light-1000: #FFFFFF;
+    --clr-light-800: #FDF9F4;
+    --clr-light-700: #F9EADD;
+    --clr-accent-: #55ADFD;
+    --clr-dark-accent-: #82B4E1;
+    --clr-ff-heading-: #2E263E;
+    --clr-ff-subtitle-: #393B5F;
+    --clr-ff-para-: #27232E;
+
+    --bg-color: var(--clr-light-700);
+    --bg-secondary-color: var(--clr-light-800);
+    --heading-color: var(--clr-ff-heading-);
+    --para-color: var(--clr-ff-para-);
+    --subtitle-color: var(--clr-ff-subtitle-);
+    --input-color: var(--clr-ff-para-);
+    --button-color: var(--clr-accent-);
+    --button-text-color: var(--clr-light-1000);
+}
+
+/* Light theme */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: var(--clr-light-700);
+        --bg-secondary-color: var(--clr-light-800);
+        --heading-color: var(--clr-ff-heading-);
+        --para-color: var(--clr-ff-para-);
+        --subtitle-color: var(--clr-ff-subtitle-);
+        --input-color: var(--clr-ff-para-);
+        --button-color: var(--clr-accent-);
+        --button-text-color: var(--clr-light-1000);
+    }
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: var(--clr-dark-100-);
+        --bg-secondary-color: var(--clr-dark-300-);
+        --heading-color: var(--clr-light-800);
+        --para-color: var(--clr-light-1000);
+        --subtitle-color: var(--clr-light-700);
+        --input-color: var(--clr-light-1000);
+        --button-color: var(--clr-dark-accent-);
+        --button-text-color: var(--clr-light-1000);
+    }
+}
+
+.random-container {
+    color: var(--subtitle-color);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@200&family=Source+Code+Pro:wght@300;600;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    font-family: 'Sofia Sans', 'Courier New', Courier, monospace;
+    background-color: var(--bg-color);
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: var(--clr-ff-para-);
+    padding: 1.5rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2.5rem;
+    color: white;
+}
+
+.nav {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-tab {
+    margin: 0 1.5rem 0 1.5rem;
+    align-self: flex-end;
+}
+
+
+.dropbtn {
+
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 1rem;
+    cursor: pointer;
+    transform: translateY(20px);
+}
+
+.dropdown-content {
+    display: none;
+
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 8rem;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transform: translateY(3rem) translateX(-1rem);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.icon-tab {
+    margin: 0 1.5rem 0 1.5rem;
+    align-self: flex-end;
+}
+
+#logout,
+#random {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

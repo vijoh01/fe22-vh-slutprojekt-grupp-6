@@ -32,29 +32,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log(app);
 const database = getDatabase();
 
-console.log(database);
-
 // skriva
-function writeUserData(message) {
-    let adressRef = ref(database, "user");
-    set(adressRef, {
-        namn: message,
+function writeUserData(user, message) {
+    let adressRef = ref(database, "user/arr");
+    push(adressRef, {
+        displayName: user,
+        message: message
     });
 }
 
+
 let signUp = false;
-
-writeUserData("SUPP DOG!!!");
-
-// läsa en specifik onValue direkt + när den ändrar value
-const urlRef = ref(database, "user");
-onValue(urlRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data.namn);
-});
 
 var loginForm = document.getElementById("login-form");
 var dropdown = document.querySelector(".dropdown");
@@ -76,37 +66,73 @@ const profileWrapper = document.querySelector('#profileWrapper');
 const displayNameChange = document.querySelector('#displayNameChange');
 const newDisplayName = document.querySelector('#newDisplayName');
 const xProfile = document.querySelector('#xProfile');
+const searchButton = document.querySelector(".search-btn");
+const searchInput = document.querySelector(".search-input");
 
-displayNameP.addEventListener('click', function(){
+const cardContainer = document.querySelector('.card-container');
+const closePost = document.querySelector("#close-post");
+const submitBtn = document.querySelector("#submit-button");
+const postText = document.querySelector("#post-text");
+const mobilePost = document.querySelector("#mobile-post");
+
+closePost.addEventListener('click', (e) => {
+    postBox.classList.add("hide");
+});
+
+mobilePost.addEventListener('click', (e) => {
+    postBox.classList.remove("hide");
+});
+
+submitBtn.addEventListener('click', () => {
+
+    writeUserData(username.textContent, postText.value);
+    postBox.classList.add("hide");
+    let urlRef = ref(database, "user");
+    onValue(urlRef, (snapshot) => {
+        const data = snapshot.val();
+        let arr = Object.values(data.arr).reverse();
+        cardContainer.innerHTML = "";
+        arr.forEach((val) => {
+            let div = document.createElement('div');
+            let title = document.createElement('h1');
+            let text = document.createElement('p');
+            title.innerText = val.displayName;
+                div.append(title);
+            text.innerText = val.message;
+            div.append(text);
+            div.className = "card";
+            cardContainer.append(div);
+            
+        })
+        
+    });
+})
+
+displayNameP.addEventListener('click', function (e) {
+    e.preventDefault();
     displayNameP.classList.add('hide');
     displayNameChange.classList.remove('hide');
     newDisplayName.setAttribute('placeholder', displayNameP.innerText);
 });
 
-profileBtn.addEventListener('click', function(){
+profileBtn.addEventListener('click', function () {
     profileWrapper.classList.remove('hide');
 });
 
-displayProfileBtn.addEventListener('click', function(){
+displayProfileBtn.addEventListener('click', function () {
     profileWrapper.classList.remove('hide');
 });
 
-xProfile.addEventListener('click', function(){
+xProfile.addEventListener('click', function () {
     profileWrapper.classList.add('hide');
 })
 
-post.addEventListener('click', function(){
+post.addEventListener('click', function () {
+    document.body.classList.add('.overflow');
+    
     postBox.classList.remove('hide');
-    searchField.classList.add('hide');
-    searchBtn.classList.remove('hide');
-    post.classList.add('hide');
-});
+   
 
-searchBtn.addEventListener('click', function(){
-    searchBtn.classList.add('hide');
-    postBox.classList.add('hide');
-    post.classList.remove('hide');
-    searchField.classList.remove('hide');
 });
 
 userInput.classList.add('hide');
@@ -116,12 +142,12 @@ loginForm.addEventListener("click", function (e) {
     var password = passwordInput.value;
     //register();
 
-    if (e.target.id == "login-button"){
+    if (e.target.id == "login-button") {
         if (!signUp) {
-        audio.play();
-            login(email, password); 
+            audio.play();
+            login(email, password);
         } else {
-            register(email, userInput.value,password); 
+            register(email, userInput.value, password);
         }
     }
 
@@ -134,18 +160,22 @@ loginForm.addEventListener("click", function (e) {
             console.log("test");
             signUp = false;
         } else {
-        userInput.classList.remove('hide');
-        loginTitle.innerText = "Register";
-        loginBtn.innerText = "Register";
-        navBtn.innerText = "Back to Sign In";
-        signUp = true;
+            userInput.classList.remove('hide');
+            loginTitle.innerText = "Register";
+            loginBtn.innerText = "Register";
+            navBtn.innerText = "Back to Sign In";
+            signUp = true;
         }
-        
+
     }
 
 });
 dropdown.classList.add('hide');
 logout.addEventListener("click", function (e) {
+    userLogout();
+})
+
+function userLogout() {
     profileWrapper.classList.add('hide');
     signOut(auth).then(() => {
         console.log("logout");
@@ -154,37 +184,56 @@ logout.addEventListener("click", function (e) {
     }).catch((error) => {
         // An error happened.
     });
-})
+}
 
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
-displayNameChange.addEventListener('submit', function(){
+displayNameChange.addEventListener('submit', function () {
+    e.preventDefault();
     let newName = newDisplayName.value;
     profileWrapper.classList.add('hide');
+
     updateProfile(auth.currentUser, {
         displayName: newName
-      }).then(() => {
+    }).then(() => {
         // Profile updated!
         // ...
-      }).catch((error) => {
+    }).catch((error) => {
         // An error occurred
         // ...
-      });
+    });
 })
 
 
 onAuthStateChanged(auth, (user) => {
-    
-    if (user != null) {
-        console.log(user);
+
+    if (user) {
         console.log(user.displayName + ' already signed in')
         dropdown.classList.remove('hide');
         loginWrapper.classList.add('hide');
         username.innerText = auth.currentUser.displayName;
         const uid = user.uid;
         displayNameP.innerText = auth.currentUser.displayName;
-        console.log(auth.currentUser.displayName);
+        let urlRef = ref(database, "user");
+    onValue(urlRef, (snapshot) => {
+        const data = snapshot.val();
+        let arr = Object.values(data.arr).reverse();
+        cardContainer.innerHTML = "";
+        arr.forEach((val) => {
+            let div = document.createElement('div');
+            let title = document.createElement('h1');
+            let text = document.createElement('p');
+            title.innerText = val.displayName;
+                div.append(title);
+            text.innerText = val.message;
+            div.append(text);
+            div.className = "card";
+            cardContainer.append(div);
+        
+        })
+      
+    });
     } else {
         loginForm.style.visibility = "visible";
         loginWrapper.classList.remove('hide');
@@ -200,11 +249,12 @@ function login(email, password) {
             // Login success
             dropdown.classList.remove('hide');
             loginWrapper.classList.remove('hide');
-       
+
             loginWrapper.classList.add('hide');
             auth.currentUser.reload();
             username.innerText = auth.currentUser.displayName;
             displayNameP.innerText = auth.currentUser.displayName;
+
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -222,15 +272,15 @@ function register(email, user, password) {
             updateProfile(auth.currentUser, {
                 displayName: user,
                 photoURL: "da",
-              }).then(function() {
+            }).then(function () {
                 auth.currentUser.reload();
                 username.innerText = auth.currentUser.displayName;
                 dropdown.classList.remove('hide');
-        
-              }).catch(function(error) {
+
+            }).catch(function (error) {
                 // An error occurred.
-              });
-         
+            });
+
 
         })
         .catch(function (error) {

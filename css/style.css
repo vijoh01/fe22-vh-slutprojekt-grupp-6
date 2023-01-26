@@ -44,7 +44,7 @@
     --para-color: var(--clr-light-1000);
     --subtitle-color: var(--clr-light-700);
     --input-color: var(--clr-light-1000);
-    --button-color: var(--clr-dark-accent-accent-);
+    --button-color: var(--clr-dark-accent-);
     --button-text-color: var(--clr-light-1000);
   }
 }
@@ -54,22 +54,23 @@
 * {
   margin: 0;
   padding: 0;
+  border: none;
 }
 
 body {
   font-family: 'Sofia Sans', 'Courier New', Courier, monospace;
-  background-color: #f5eae0;
-  overflow: hidden;
+  background-color: var(--bg-color);
+
 }
 
 .dropbtn {
-  
+
   color: white;
   font-size: 16px;
   border: none;
 }
 
-.dropdown{
+.dropdown {
   position: relative;
   display: inline-block;
   padding: 1rem;
@@ -79,13 +80,13 @@ body {
 
 .dropdown-content {
   display: none;
-  
+
   position: absolute;
   background-color: #f1f1f1;
   min-width: 8rem;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transform: translateY(3rem) translateX(-1rem);
+  transform: translateY(4.6rem) translateX(-1rem);
 }
 
 .dropdown-content a {
@@ -95,9 +96,13 @@ body {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 
 .icon-tab {
@@ -117,26 +122,24 @@ input:focus {
   row-gap: 10px;
 }
 
-#logout {
+#logout,
+#random {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
-.card {
-  flex-basis: 25%;
-  background-color: #fdfaf4;
 
-  background-color: #F5EAE0;
-}
 
 .hide {
   display: none !important;
 }
 
-#loginWrapper, #profileWrapper {
+#loginWrapper,
+#profileWrapper {
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   backdrop-filter: blur(30px);
   display: flex;
   justify-content: center;
@@ -153,12 +156,15 @@ input:focus {
 }
 
 #login-form input {
+  padding-left: 0.5rem;
   height: 3rem;
   margin: 0.3rem 0 0.3rem 0;
   border-radius: 10px;
+  border: 1px solid black;
 }
 
 #login-form button {
+  border: 1px solid black;
   margin: 0.3rem 0 0.3rem 0;
   height: 3rem;
   font-size: 1.1rem;
@@ -172,7 +178,8 @@ input:focus {
   background-color: black;
 }
 
-.login-container, .profile-container {
+.login-container,
+.profile-container {
   background-color: white;
   padding: 5rem;
   backdrop-filter: blur(10px);
@@ -181,7 +188,7 @@ input:focus {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
+
 }
 
 #displayNameChange {
@@ -189,7 +196,7 @@ input:focus {
 }
 
 #newDisplayName {
-  max-width:130px;
+  max-width: 130px;
   border: none;
   display: inline;
   font-family: inherit;
@@ -212,15 +219,15 @@ textarea {
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: #27232E;
+  background-color: var(--clr-ff-para-);
   padding: 1.5rem 0 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 2.5rem;
   color: white;
-  
-  
+
+
 }
 
 .nav {
@@ -232,16 +239,16 @@ textarea {
 .search-container .search-bar {
   min-width: 15rem;
   max-width: 20rem;
-  
+
   border-radius: 20px;
   border: 0;
 }
 
 header {
-  background-color: #27232E;
+  background-color: var(--heading-color);
   display: flex;
   justify-content: space-between;
-  
+
 }
 
 .search-field button {
@@ -250,7 +257,7 @@ header {
 
 .search-container .search-field {
   outline: 1px solid black;
-  
+
   padding-left: 1.5rem;
   margin-right: 5rem;
   border-radius: 20rem;
@@ -258,11 +265,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 
 
-#post, #search {
+#post,
+#search {
   height: 2.5rem;
   border-radius: 20rem;
   border: 0;
@@ -272,7 +280,7 @@ header {
   color: white;
   background-color: var(--clr-accent-);
   width: 10rem;
-  border: 2px white solid;
+
   margin: 0 1.5rem 0 1.5rem;
   cursor: pointer;
 }
@@ -288,15 +296,6 @@ header {
   border: 2px white solid;
 }
 
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 30px;
-  row-gap: 10px;
-}
-
 input:focus {
   outline: none !important;
 }
@@ -307,24 +306,36 @@ input:focus {
   justify-content: center;
   column-gap: 30px;
   row-gap: 10px;
+  padding-top: 2rem;
+  width: 70%;
 }
 
 .card {
-  flex-basis: 25%;
-  background-color: #FDFAF4;
-
+  flex-basis: 100%;
+  background-color: var(--bg-secondary-color);
   border-radius: 20px;
   padding: 10px;
-  box-shadow: 2px 2px 5px #ccc;
-  height: 168px;
-  width: 336px;
-  margin: 1%;
+  overflow: hidden;
+  height: auto;
+  word-wrap: break-word;
+  width: 40rem;
+  margin: 1px;
+  padding: 1.5rem 5%;
+  max-width: 35rem;
+  color: var(--para-color);
 }
 
-@media only screen and (max-width: 600px) {
-  .card {
-    flex-basis: calc(50% - 20px);
-  }
+.card * {
+  margin: 1rem 0;
+
+}
+
+.nav img {
+  width: 4rem;
+}
+
+.card h1 {
+  font-size: 1.3rem;
 }
 
 /* DANYS FEATURE */
@@ -356,9 +367,15 @@ input:focus {
   display: none;
 }
 
+.overflow {
+  overflow: hidden;
+}
+
 .fadeInText {
   animation: fadeIn 5s;
 }
+
+
 
 @keyframes fadeIn {
   0% {
@@ -370,47 +387,167 @@ input:focus {
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .card {
-    flex-basis: calc(50% - 20px);
-    
+@media only screen and (max-width: 1000px) {
+
+  #post {
+    visibility: hidden;
+    overflow: hidden;
+    display: none;
   }
 
-  body {
-    overflow: hidden;
+  #mobile-post {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 0rem;
+    height: 4rem;
+    border-radius: 20rem;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    background-color: var(--clr-accent-);
+    width: 4rem;
+  
+    margin: 0 1.5rem 0 1.5rem;
+    cursor: pointer;
   }
-  .login-container {
-    
+
+  .background-mobile-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: var(--bg-color);
+    width: 6.2rem;
+    height: 6.2rem;
+    border-radius: 2rem 0rem 0rem 0rem;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .card-container {
+    width: 35rem;
+  }
+
+  .search-container {
+    width: 100%;
+    height: 4rem;
+    background-color: var(--clr-ff-para-);
+    padding: 0;
+    display: block;
+    justify-content: center;
+    padding: 0 0rem 0 0.5rem;
   }
 
   
+  
+
+  .nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+
+    flex-basis: 100%;
+
+  }
+
+  .submit,
+  .search-field {
+
+    visibility: hidden;
+    overflow: hidden;
+    display: none;
+  }
+
+  .nav img {
+    width: 4rem;
+  }
+
+  .dropdown {
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    flex-basis: calc(50% - 20px);
+    width: 35rem;
+
+  }
+
+  .login-container {}
+
+
 }
+
+
 
 #postBox {
-  margin:2rem;
-}
-
-#textform {
-  outline: 1px solid black;
-  padding-left: 1.5rem;
-  margin-right: 5rem;
-  border-radius: 1rem;
-  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(30px);
+
 }
+
+textarea:focus {
+  border: 1px var(--clr-accent-) solid;
+}
+
+.top-icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#close-post {
+  cursor: pointer;
+}
+
+textarea {
+
+  outline: none;
+  border: 1px solid black;
+
+
+  overflow: auto;
+
+  font-size: 1.2rem;
+  height: 12rem;
+  width: 92%;
+  padding: 1rem;
+}
+
+#textform {
+
+  padding: 1rem 0;
+
+  height: 21rem;
+  border-radius: 1rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 25rem;
+}
+
 #textform button {
   height: 2.5rem;
   border-radius: 20rem;
-  border: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: white;
   background-color: var(--clr-accent-);
   width: 10rem;
-  border: 2px white solid;
-  margin: 0 1.5rem 0 1.5rem;
+  margin: 0 0.25rem 0 0.25rem;
   cursor: pointer;
 }
