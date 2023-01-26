@@ -68,16 +68,25 @@ const newDisplayName = document.querySelector('#newDisplayName');
 const xProfile = document.querySelector('#xProfile');
 const searchButton = document.querySelector(".search-btn");
 const searchInput = document.querySelector(".search-input");
-const submitBtn = document.querySelector('#submit-button');
 
-submitBtn.addEventListener('submit', () => {
-    e.preventDefault();
-    console.log("tesdasdsa");
-})
 const cardContainer = document.querySelector('.card-container');
-searchButton.addEventListener('click', () => {
+const closePost = document.querySelector("#close-post");
+const submitBtn = document.querySelector("#submit-button");
+const postText = document.querySelector("#post-text");
+const mobilePost = document.querySelector("#mobile-post");
 
-    writeUserData(username.textContent, searchInput.value);
+closePost.addEventListener('click', (e) => {
+    postBox.classList.add("hide");
+});
+
+mobilePost.addEventListener('click', (e) => {
+    postBox.classList.remove("hide");
+});
+
+submitBtn.addEventListener('click', () => {
+
+    writeUserData(username.textContent, postText.value);
+    postBox.classList.add("hide");
     let urlRef = ref(database, "user");
     onValue(urlRef, (snapshot) => {
         const data = snapshot.val();
@@ -93,8 +102,9 @@ searchButton.addEventListener('click', () => {
             div.append(text);
             div.className = "card";
             cardContainer.append(div);
+            
         })
-      
+        
     });
 })
 
@@ -118,20 +128,11 @@ xProfile.addEventListener('click', function () {
 })
 
 post.addEventListener('click', function () {
-    console.log("test");
-
+    document.body.classList.add('.overflow');
+    
     postBox.classList.remove('hide');
-    searchField.classList.add('hide');
-    searchBtn.classList.remove('hide');
-    post.classList.add('hide');
+   
 
-});
-
-searchBtn.addEventListener('click', function () {
-    searchBtn.classList.add('hide');
-    postBox.classList.add('hide');
-    post.classList.remove('hide');
-    searchField.classList.remove('hide');
 });
 
 userInput.classList.add('hide');
