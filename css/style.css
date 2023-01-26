@@ -368,6 +368,10 @@ input:focus {
   border-radius: 1rem;
 }
 
+#search-result-count {
+  text-align: center
+}
+
 /* DANYS FEATURE */
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
 
