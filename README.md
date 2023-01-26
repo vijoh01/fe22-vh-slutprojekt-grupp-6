@@ -1,4 +1,4 @@
-# Contribution Policy
+# Random Contribution Guidelines
 
 * För att implementera features i MsgBoard vänligen gör det inom fliken "Random".
 
@@ -12,4 +12,5 @@
 
 ![bild](https://user-images.githubusercontent.com/76432491/214717515-f615ddec-a6a0-4e63-9670-b2cca82facf6.png)
 
-### Lycka till och uttryck dig med din kod precis hur du vill!
+Hör av er ifall ni vill koda något utanför Random taben.
+### Lycka till och lägg till precis vad du vill i random!
