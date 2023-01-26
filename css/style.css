@@ -551,3 +551,25 @@ textarea {
   margin: 0 0.25rem 0 0.25rem;
   cursor: pointer;
 }
+
+
+/*
+     ALRIKS STUFF  pullrequest  on hover animation on buttons/logo
+*/
+#post{
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  outline: 0rem solid var(--clr-accent-)  ;
+
+}
+#post:hover{
+  outline: .5rem solid var(--clr-accent-)  ;
+}
+
+.logo{
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+.logo:hover{
+  transform:  scale(1.2)
+}
