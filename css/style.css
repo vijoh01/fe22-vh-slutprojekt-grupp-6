@@ -325,6 +325,40 @@ input:focus {
     font-size: 1.3rem;
 }
 
+/*SEARCH BOX*/
+.search-box{
+  display: none;
+  color: var(--para-color);
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 1rem 0 0 1rem;
+  position: absolute;
+  right: 0;
+  margin-top: 9rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.search-hide-click {
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--clr-accent-);
+  color: var(--button-text-color);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.searchCard {
+  background-color: var(--bg-secondary-color);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+}
+
+#search-result-count {
+  text-align: center
+}
+
 /* DANYS FEATURE */
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
 

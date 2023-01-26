@@ -290,6 +290,56 @@ function register(email, user, password) {
         });
 }
 
+//Search functions, display in a container and show the total hits of matching word
+onValue(ref(database, "user/arr"), (snapshot) => {
+    const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn');
+    const searchErrorText = document.querySelector('.search-error-text');
+    const searchResultsContainer = document.querySelector('#search-results-container');
+    const searchResultCount = document.querySelector('#search-result-count');
+    const searchBox = document.querySelector('.search-box'); 
+    const searchHideBtn = document.querySelector('.search-hide-click'); 
+
+    searchBtn.addEventListener('click', searchMessages);
+
+    function searchMessages() {
+        const searchQuery = searchInput.value.toLowerCase();
+        if (searchInput.value <= 0) {
+            searchResultsContainer.innerHTML = '';
+            searchResultCount.innerText = ``;
+            searchErrorText.innerText = 'No inputs';
+            searchBox.style.display = 'none';
+        }
+        else {
+            const filteredMessages = [];
+            snapshot.forEach(childSnapshot => {
+                if (childSnapshot.val().message.toLowerCase().includes(searchQuery.toLowerCase()))
+                    filteredMessages.push(childSnapshot);
+            });
+
+            searchResultsContainer.innerHTML = '';
+
+            //Here add class or id to style the messages
+            filteredMessages.forEach(function (childSnapshot) {
+                const childData = childSnapshot.val();
+                const messageDiv = document.createElement('div');
+                messageDiv.innerText = childData.displayName + ": " + childData.message;
+                messageDiv.style.backgroundColor = childData.color;
+                messageDiv.classList.add("searchCard");
+                searchResultsContainer.appendChild(messageDiv);
+            });
+            searchBox.style.display = 'block';
+            searchResultCount.innerText = `${filteredMessages.length} matching results`;
+            searchInput.value = '';
+            searchErrorText.innerText = '';
+        }
+    }
+    searchHideBtn.addEventListener('click', () => {
+        searchBox.style.display = 'none';
+    })
+});
+
+
 /*
 //DANYS FEATURE
 let danyBtn = document.getElementById("danyBtn");
