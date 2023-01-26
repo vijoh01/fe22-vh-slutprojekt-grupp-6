@@ -80,6 +80,7 @@ const closePost = document.querySelector("#close-post");
 const submitBtn = document.querySelector("#submit-button");
 const postText = document.querySelector("#post-text");
 const mobilePost = document.querySelector("#mobile-post");
+const mobilePostBac = document.querySelector(".background-mobile-button");
 
 closePost.addEventListener("click", (e) => {
     postBox.classList.add("hide");
@@ -155,6 +156,7 @@ loginForm.addEventListener("click", function (e) {
         } else {
             register(email, userInput.value, password);
         }
+        mobilePostBac.classList.remove("hide");
     } else if (e.target.id == "nav-button") {
         if (signUp) {
             userInput.classList.add("hide");
@@ -172,6 +174,7 @@ loginForm.addEventListener("click", function (e) {
         }
     }
 });
+mobilePostBac.classList.add("hide");
 dropdown.classList.add("hide");
 logout.addEventListener("click", function (e) {
     userLogout();
@@ -215,6 +218,7 @@ displayNameChange.addEventListener("submit", function (e) {
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log(user.displayName + " already signed in");
+        mobilePostBac.classList.remove("hide");
         dropdown.classList.remove("hide");
         loginWrapper.classList.add("hide");
         username.innerText = auth.currentUser.displayName;
@@ -238,6 +242,7 @@ onAuthStateChanged(auth, (user) => {
             });
         });
     } else {
+        mobilePostBac.classList.add("hide");
         loginForm.style.visibility = "visible";
         loginWrapper.classList.remove("hide");
         dropdown.classList.add("hide");
