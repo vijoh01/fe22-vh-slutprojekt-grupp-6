@@ -93,7 +93,6 @@ searchButton.addEventListener('click', () => {
             div.append(text);
             div.className = "card";
             cardContainer.append(div);
-            console.log(val);
         })
       
     });
@@ -172,6 +171,10 @@ loginForm.addEventListener("click", function (e) {
 });
 dropdown.classList.add('hide');
 logout.addEventListener("click", function (e) {
+    userLogout();
+})
+
+function userLogout() {
     profileWrapper.classList.add('hide');
     signOut(auth).then(() => {
         console.log("logout");
@@ -180,7 +183,7 @@ logout.addEventListener("click", function (e) {
     }).catch((error) => {
         // An error happened.
     });
-})
+}
 
 const auth = getAuth();
 let currentUser = auth.currentUser;
@@ -205,14 +208,12 @@ displayNameChange.addEventListener('submit', function () {
 onAuthStateChanged(auth, (user) => {
 
     if (user) {
-        console.log(user);
         console.log(user.displayName + ' already signed in')
         dropdown.classList.remove('hide');
         loginWrapper.classList.add('hide');
         username.innerText = auth.currentUser.displayName;
         const uid = user.uid;
         displayNameP.innerText = auth.currentUser.displayName;
-        console.log(auth.currentUser.displayName);
         let urlRef = ref(database, "user");
     onValue(urlRef, (snapshot) => {
         const data = snapshot.val();
@@ -228,7 +229,7 @@ onAuthStateChanged(auth, (user) => {
             div.append(text);
             div.className = "card";
             cardContainer.append(div);
-            console.log(val);
+        
         })
       
     });
