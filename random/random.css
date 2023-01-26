@@ -3,7 +3,7 @@
 .random-container {
     height: 85vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     flex-basis: 55%;
@@ -13,7 +13,11 @@
     max-width: 80%;
 }
 
-/* Flower animation */
+.random-example {
+    width: 16rem;
+}
+
+/* Flower animation - louise */
 
 .flowers img {
     width: 70px;
@@ -27,7 +31,8 @@
     align-items: center; 
     justify-content: space-around;
     position: absolute;
-    top: -80px;
+    top: 2rem;
+    left: 10rem;
 }
 
 .star {
@@ -66,7 +71,7 @@
   }
 
   #hampusKnapp {
-    padding: 5rem;
+    padding: 3rem;
   }
 
 @keyframes flower {
@@ -109,6 +114,36 @@
     width: 40px;
 }
 .flowers img:nth-child(7){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(8){
+    animation-delay: 2.5s;
+}
+.flowers img:nth-child(9){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(10){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(11){
+    animation-delay: 2.5s;
+}
+.flowers img:nth-child(12){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(13){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(14){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(15){
     animation-delay: 7s;
     width: 60px;
 }
@@ -212,6 +247,20 @@
     }
 }
 
+
+@media only screen and (max-width: 1000px) { 
+    .random-container {
+        height: 100vh;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        
+        flex-wrap: wrap;
+        flex-basis: 55%;
+    }
+}
+
+
 .random-container {
     color: var(--subtitle-color);
 }
@@ -247,6 +296,7 @@ body {
     justify-content: space-between;
     padding-left: 2.5rem;
     color: white;
+    z-index: 1;
 }
 
 .nav {
