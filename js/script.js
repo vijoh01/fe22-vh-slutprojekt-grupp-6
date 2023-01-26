@@ -37,12 +37,9 @@ const database = getDatabase();
 // skriva
 function writeUserData(user, message) {
     let adressRef = ref(database, "user/arr");
-    console.log(user);
     push(adressRef, {
-        displayName: user.displayName,
-        message: message,
-        date: Date.now(),
-        uid: user.uid
+        displayName: user,
+        message: message
     });
 }
 
@@ -87,7 +84,7 @@ mobilePost.addEventListener('click', (e) => {
 });
 
 submitBtn.addEventListener('click', () => {
-    writeUserData(auth.currentUser, postText.value);
+    writeUserData(username.textContent, postText.value);
     postBox.classList.add("hide");
     let urlRef = ref(database, "user");
     onValue(urlRef, (snapshot) => {
@@ -106,7 +103,7 @@ submitBtn.addEventListener('click', () => {
             cardContainer.append(div);
             
         })
-
+        
     });
 })
 
@@ -136,34 +133,6 @@ post.addEventListener('click', function () {
    
 
 });
-
-function timeSince(date) {
-
-    let seconds = Math.floor((new Date() - date) / 1000);
-  
-    let interval = seconds / 31536000;
-  
-    if (interval > 1) {
-      return Math.floor(interval) + " years";
-    }
-    interval = seconds / 2592000;
-    if (interval > 1) {
-      return Math.floor(interval) + " months";
-    }
-    interval = seconds / 86400;
-    if (interval > 1) {
-      return Math.floor(interval) + " days";
-    }
-    interval = seconds / 3600;
-    if (interval > 1) {
-      return Math.floor(interval) + " hours";
-    }
-    interval = seconds / 60;
-    if (interval > 1) {
-      return Math.floor(interval) + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
-  }
 
 userInput.classList.add('hide');
 loginForm.addEventListener("click", function (e) {
@@ -219,25 +188,17 @@ function userLogout() {
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
-displayNameChange.addEventListener('submit', function(e) {
+displayNameChange.addEventListener('submit', function () {
     e.preventDefault();
-    let oldName = auth.currentUser.displayName;
     let newName = newDisplayName.value;
     profileWrapper.classList.add('hide');
-    console.log(`we want to change to ${newName}`)
+
     updateProfile(auth.currentUser, {
         displayName: newName
     }).then(() => {
-        auth.currentUser.reload();
-        location.reload();
         // Profile updated!
-        // Behöver uppdate gamla displayname till nya för messages i db
-        // alternativt går det att använda adminSDK för att ta fram
-        // displayName för specific UID så kommer det alltid vara senaste
-        // men kanske inte ett preferred sätt att göra det på tekniskt
         // ...
     }).catch((error) => {
-        console.log(error);
         // An error occurred
         // ...
     });
@@ -259,16 +220,11 @@ onAuthStateChanged(auth, (user) => {
         let arr = Object.values(data.arr).reverse();
         cardContainer.innerHTML = "";
         arr.forEach((val) => {
-            console.log(val);
             let div = document.createElement('div');
             let title = document.createElement('h1');
             let text = document.createElement('p');
-            let timestamp = document.createElement('p');
             title.innerText = val.displayName;
-            timestamp.innerText = `${timeSince(val.date)} ago`;
-            div.append(title);
-            title.append(timestamp);
-            timestamp.className = "timestamp";
+                div.append(title);
             text.innerText = val.message;
             div.append(text);
             div.className = "card";
