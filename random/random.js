@@ -1,4 +1,10 @@
 /*       - JAVASCRIPT - Varsågod och ta för dig! -      */
+const changeColorBtn = document.getElementById('hampusKnapp');
+changeColorBtn.addEventListener('click', ()=>{
+  const randomHue = Math.floor(Math.random() *360);
+  changeColorBtn.style.backgroundColor = `hsl(${randomHue}, 50%, 50%)`;
+});
+
 let garfAnimation = anime({
   targets: '#garf',
   delay: 0,
@@ -24,8 +30,6 @@ function garfAppear() {
 }
 
 // garfAppear(); får läggas till i event listenern som lysnar på submit-button när man skriver meddelandet
-
-
 
 
 
