@@ -499,7 +499,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(30px);
-
+  -webkit-backdrop-filter: blur(30px);
 }
 
 textarea:focus {
