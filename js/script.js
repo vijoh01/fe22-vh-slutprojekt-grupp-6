@@ -97,9 +97,8 @@ submitBtn.addEventListener("click", () => {
         const data = snapshot.val();
         let arr = Object.values(data.arr).reverse();
         cardContainer.innerHTML = "";
-        let first=true
+        let first=true  // alriks variabel för att kolla den första card
         arr.forEach((val) => {
-         
             let div = document.createElement("div");
             let title = document.createElement("h1");
             let text = document.createElement("p");
