@@ -1,4 +1,4 @@
-# Random Contribution Guidelines
+# Riktlinjer för bidragande
 
 * För att implementera features i MsgBoard vänligen gör det inom fliken "Random".
 
