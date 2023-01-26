@@ -3,7 +3,7 @@
 .random-container {
     height: 85vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     flex-basis: 55%;
@@ -11,6 +11,10 @@
 
 .random-container * {
     max-width: 80%;
+}
+
+.random-example {
+    width: 16rem;
 }
 
 /* Flower animation - louise */
@@ -67,7 +71,7 @@
   }
 
   #hampusKnapp {
-    padding: 5rem;
+    padding: 3rem;
   }
 
 @keyframes flower {
@@ -215,6 +219,20 @@
         --button-text-color: var(--clr-light-1000);
     }
 }
+
+
+@media only screen and (max-width: 1000px) { 
+    .random-container {
+        height: 100vh;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        
+        flex-wrap: wrap;
+        flex-basis: 55%;
+    }
+}
+
 
 .random-container {
     color: var(--subtitle-color);
