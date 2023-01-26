@@ -3,8 +3,7 @@
 .random-container {
     height: 85vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -12,7 +11,7 @@
     display: none;
     height: 150px;
     position: absolute;
-    top: 40px; left: 40px;
+    top: 10rem; left: 10rem;
   }
 
 
