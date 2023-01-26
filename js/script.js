@@ -39,7 +39,8 @@ function writeUserData(user, message) {
     let adressRef = ref(database, "user/arr");
     push(adressRef, {
         displayName: user,
-        message: message
+        message: message,
+        date: Date.now()
     });
 }
 
@@ -135,6 +136,34 @@ post.addEventListener('click', function () {
 
 });
 
+function timeSince(date) {
+
+    let seconds = Math.floor((new Date() - date) / 1000);
+  
+    let interval = seconds / 31536000;
+  
+    if (interval > 1) {
+      return Math.floor(interval) + " years";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  }
+
 userInput.classList.add('hide');
 loginForm.addEventListener("click", function (e) {
     e.preventDefault();
@@ -224,8 +253,12 @@ onAuthStateChanged(auth, (user) => {
             let div = document.createElement('div');
             let title = document.createElement('h1');
             let text = document.createElement('p');
+            let timestamp = document.createElement('p');
             title.innerText = val.displayName;
-                div.append(title);
+            timestamp.innerText = `${timeSince(val.date)} ago`;
+            div.append(title);
+            title.append(timestamp);
+            timestamp.className = "timestamp";
             text.innerText = val.message;
             div.append(text);
             div.className = "card";

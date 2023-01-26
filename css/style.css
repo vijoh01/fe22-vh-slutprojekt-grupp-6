@@ -330,6 +330,12 @@ input:focus {
 
 }
 
+.timestamp {
+  display: inline;
+  font-size: 0.75rem;
+  margin: 0.5rem;
+}
+
 .nav img {
   width: 4rem;
 }
