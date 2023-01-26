@@ -19,7 +19,7 @@
   --input-color: var(--clr-ff-para-);
   --button-color: var(--clr-accent-);
   --button-text-color: var(--clr-light-1000);
-}
+
 
     --clr-dark-100-: #393b5f;
     --clr-dark-200-: #545379;
@@ -82,6 +82,9 @@
 body {
     font-family: "Sofia Sans", "Courier New", Courier, monospace;
     background-color: var(--bg-color);
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
 }
 
 .dropbtn {
