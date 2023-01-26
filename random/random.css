@@ -7,6 +7,25 @@
     align-items: center;
 }
 
+
+.star {
+    clip-path: polygon(50% 0%, 61% 35%, 100% 35%, 68% 57%, 78% 91%, 50% 70%, 22% 91%, 32% 57%, 0% 35%, 39% 35%);
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--subtitle-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }    
+}
+
 #garf {
     display: none;
     height: 150px;
