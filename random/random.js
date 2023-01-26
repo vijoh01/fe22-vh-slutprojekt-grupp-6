@@ -13,18 +13,19 @@ let garfAnimation = anime({
 })
   
 function garfAppear() {
-  if (document.getElementById('message-input').value.indexOf("garfield") > -1) {
+
        console.log('garfield') 
-      let garfield = document.getElementById('garf')
-       garfield.style.display= "block"
+      let garfield = document.getElementById('garf');
+       garfield.style.display= "block";
        garfAnimation.play();     
-     }else{
-       document.getElementById('garf').style.display = "none"
-     }
+     
 }
 
-// garfAppear(); får läggas till i event listenern som lysnar på submit-button när man skriver meddelandet
 
+let activate = document.querySelector('#garfBtn');
+activate.addEventListener('click', () => {
+    garfAppear();
+});
 
 
 

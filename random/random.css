@@ -3,8 +3,7 @@
 .random-container {
     height: 85vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -31,7 +30,17 @@
     display: none;
     height: 150px;
     position: absolute;
-    top: 40px; left: 40px;
+    top: 10rem; left: 10rem;
+  }
+
+  #garfBtn {
+    border: none;
+    background: none;
+    filter: drop-shadow(30px 10px 4px #4444dd);
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    color: white;
   }
 
 
