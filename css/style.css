@@ -1,4 +1,26 @@
 :root {
+  --clr-dark-100-: #393B5F;
+  --clr-dark-200-: #545379;
+  --clr-dark-300-: #685E7D;
+  --clr-light-1000: #FFFFFF;
+  --clr-light-800: #FDF9F4;
+  --clr-light-700: #F9EADD;
+  --clr-accent-: #55ADFD;
+  --clr-dark-accent-: #82B4E1;
+  --clr-ff-heading-: #2E263E;
+  --clr-ff-subtitle-: #393B5F;
+  --clr-ff-para-: #27232E;
+
+  --bg-color: var(--clr-light-700);
+  --bg-secondary-color: var(--clr-light-800);
+  --heading-color: var(--clr-ff-heading-);
+  --para-color: var(--clr-ff-para-);
+  --subtitle-color: var(--clr-ff-subtitle-);
+  --input-color: var(--clr-ff-para-);
+  --button-color: var(--clr-accent-);
+  --button-text-color: var(--clr-light-1000);
+}
+
     --clr-dark-100-: #393b5f;
     --clr-dark-200-: #545379;
     --clr-dark-300-: #685e7d;
