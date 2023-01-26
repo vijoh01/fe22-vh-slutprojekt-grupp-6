@@ -5,7 +5,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    flex-basis: 55%;
 }
+
+.random-container * {
+    max-width: 80%;
+}
+
 
 
 .star {
@@ -41,6 +48,10 @@
     margin: 0;
     padding: 0;
     color: white;
+  }
+
+  #hampusKnapp {
+    padding: 5rem;
   }
 
 
