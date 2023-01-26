@@ -13,7 +13,7 @@
     max-width: 80%;
 }
 
-/* Flower animation */
+/* Flower animation - louise */
 
 .flowers img {
     width: 70px;
@@ -27,7 +27,8 @@
     align-items: center; 
     justify-content: space-around;
     position: absolute;
-    top: -80px;
+    top: 2rem;
+    left: 10rem;
 }
 
 .star {
@@ -109,6 +110,36 @@
     width: 40px;
 }
 .flowers img:nth-child(7){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(8){
+    animation-delay: 2.5s;
+}
+.flowers img:nth-child(9){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(10){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(11){
+    animation-delay: 2.5s;
+}
+.flowers img:nth-child(12){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(13){
+    animation-delay: 7s;
+    width: 60px;
+}
+.flowers img:nth-child(14){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(15){
     animation-delay: 7s;
     width: 60px;
 }
@@ -220,6 +251,7 @@ body {
     justify-content: space-between;
     padding-left: 2.5rem;
     color: white;
+    z-index: 1;
 }
 
 .nav {
