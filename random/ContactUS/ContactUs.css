@@ -93,7 +93,7 @@ ul {
 .wrapper {
     height: 45vh;
     width: 100%;
-    background-image: url(../imgs/bg2.jpg);
+    background-image: url(../../imgs/bg2.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
