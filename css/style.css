@@ -298,19 +298,10 @@ input:focus {
     width: 70%;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
 .card {
-    flex-basis: 100%;
-    background-color: var(--bg-secondary-color);
-    border-radius: 20px;
-    padding: 10px;
-    overflow: hidden;
-    height: auto;
-    word-wrap: break-word;
-    width: 40rem;
-    margin: 1px;
-    padding: 1.5rem 5%;
-    max-width: 35rem;
-    color: var(--para-color);
+
 }
 
 .card * {

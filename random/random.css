@@ -13,7 +13,22 @@
     max-width: 80%;
 }
 
+/* Flower animation */
 
+.flowers img {
+    width: 70px;
+    animation: flower 5s linear infinite;
+}
+
+
+.flowers {
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+    position: absolute;
+    top: -80px;
+}
 
 .star {
     clip-path: polygon(50% 0%, 61% 35%, 100% 35%, 68% 57%, 78% 91%, 50% 70%, 22% 91%, 32% 57%, 0% 35%, 39% 35%);
@@ -54,8 +69,50 @@
     padding: 5rem;
   }
 
+@keyframes flower {
+    0% {
+        transform: translateY(0);
+        opacity: 2;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(80vh);
+        opacity: 0;
+    }
+}
 
-
+.flowers img:nth-child(1){
+    animation-delay: 3s;
+    width: 60px;
+}
+.flowers img:nth-child(2){
+    animation-delay: 1s;
+    width: 40px;
+}
+.flowers img:nth-child(3){
+    animation-delay: 4s;
+}
+.flowers img:nth-child(4){
+    animation-delay: 5.5s;
+    width: 50px;
+}
+.flowers img:nth-child(5){
+    animation-delay: 2.5s;
+}
+.flowers img:nth-child(6){
+    animation-delay: 4.5s;
+    width: 40px;
+}
+.flowers img:nth-child(7){
+    animation-delay: 7s;
+    width: 60px;
+}
+/* end of flower animation */
 
 
 
