@@ -11,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="./imgs/logo-white.gif">
   <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.13.0//firebase-auth.js"></script>
+  <script src="js/anime.min.js" defer></script>
   <script src="./js/script.js" type="module" defer></script>
   <title>MsgBoard</title>
 </head>
@@ -107,7 +108,16 @@
       </form>
     </div>
     <div class="card-container">
+
+    </div>
     
+    <div class="search-box">
+     <section> 
+      <h3 class="search-hide-click">Hide</h3>
+      <p id="search-result-count"></p>
+      <p class="search-error-text"></p>
+     </section>
+      <div id="search-results-container"></div>
     </div>
   </div>
 </body>
