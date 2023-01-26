@@ -136,6 +136,7 @@ input:focus {
     width: 100%;
     position: fixed;
     backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,7 +177,8 @@ input:focus {
 .profile-container {
     background-color: white;
     padding: 5rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     text-align: center;
     display: flex;
     flex-direction: column;

@@ -193,8 +193,9 @@ function userLogout() {
 const auth = getAuth();
 let currentUser = auth.currentUser;
 
-displayNameChange.addEventListener("submit", function () {
+displayNameChange.addEventListener("submit", function (e) {
     e.preventDefault();
+    e.stopPropagation();
     let newName = newDisplayName.value;
     profileWrapper.classList.add("hide");
 
@@ -300,7 +301,11 @@ onValue(ref(database, "user/arr"), (snapshot) => {
     const searchBox = document.querySelector('.search-box'); 
     const searchHideBtn = document.querySelector('.search-hide-click'); 
 
-    searchBtn.addEventListener('click', searchMessages);
+    searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        searchMessages();
+    });
 
     function searchMessages() {
         const searchQuery = searchInput.value.toLowerCase();
