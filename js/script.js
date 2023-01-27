@@ -243,7 +243,7 @@ displayNameChange.addEventListener("submit", function (e) {
     })
         .then(() => {
             auth.currentUser.reload();
-            location.reload();
+            username.innerText = auth.currentUser.displayName;
             // Profile updated!
             // ...
         })
