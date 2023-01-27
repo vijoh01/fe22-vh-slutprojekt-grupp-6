@@ -44,9 +44,12 @@ const database = getDatabase();
 // skriva
 function writeUserData(user, message) {
     let adressRef = ref(database, "user/arr");
+    console.log(user);
     push(adressRef, {
-        displayName: user,
+        displayName: user.displayName,
         message: message,
+        date: Date.now(),
+        uid: user.uid
     });
 }
 
@@ -91,20 +94,24 @@ mobilePost.addEventListener("click", (e) => {
 });
 
 submitBtn.addEventListener("click", () => {
-    writeUserData(username.textContent, postText.value);
+    writeUserData(auth.currentUser, postText.value);
     postBox.classList.add("hide");
     let urlRef = ref(database, "user");
     onValue(urlRef, (snapshot) => {
         const data = snapshot.val();
         let arr = Object.values(data.arr).reverse();
         cardContainer.innerHTML = "";
-        let first=true  // alriks variabel för att kolla den första card
+        let first=true;  // alriks variabel för att kolla den första card
         arr.forEach((val) => {
             let div = document.createElement("div");
             let title = document.createElement("h1");
             let text = document.createElement("p");
+            let timestamp = document.createElement('p');
             title.innerText = val.displayName;
+            timestamp.innerText = `${timeSince(val.date)} ago`;
             div.append(title);
+            title.append(timestamp);
+            timestamp.className = "timestamp";
             text.innerText = val.message;
             div.append(text);
             div.className = "card";
@@ -141,6 +148,35 @@ post.addEventListener("click", function () {
 
     postBox.classList.remove("hide");
 });
+
+
+function timeSince(date) {
+
+    let seconds = Math.floor((new Date() - date) / 1000);
+  
+    let interval = seconds / 31536000;
+  
+    if (interval > 1) {
+      return Math.floor(interval) + " years";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  }
 
 userInput.classList.add("hide");
 loginForm.addEventListener("click", function (e) {
@@ -206,6 +242,8 @@ displayNameChange.addEventListener("submit", function (e) {
         displayName: newName,
     })
         .then(() => {
+            auth.currentUser.reload();
+            location.reload();
             // Profile updated!
             // ...
         })
@@ -230,11 +268,15 @@ onAuthStateChanged(auth, (user) => {
             let arr = Object.values(data.arr).reverse();
             cardContainer.innerHTML = "";
             arr.forEach((val) => {
-                let div = document.createElement("div");
-                let title = document.createElement("h1");
-                let text = document.createElement("p");
+                let div = document.createElement('div');
+                let title = document.createElement('h1');
+                let text = document.createElement('p');
+                let timestamp = document.createElement('p');
                 title.innerText = val.displayName;
+                timestamp.innerText = `${timeSince(val.date)} ago`;
                 div.append(title);
+                title.append(timestamp);
+                timestamp.className = "timestamp";
                 text.innerText = val.message;
                 div.append(text);
                 div.className = "card";
@@ -333,10 +375,14 @@ onValue(ref(database, "user/arr"), (snapshot) => {
             filteredMessages.forEach(function (childSnapshot) {
                 const childData = childSnapshot.val();
                 const messageDiv = document.createElement('div');
+                let timestamp = document.createElement('p');
+                timestamp.innerText = `${timeSince(childData.date)} ago`;
+                timestamp.className = "timestamp";
                 messageDiv.innerText = childData.displayName + ": " + childData.message;
                 messageDiv.style.backgroundColor = childData.color;
                 messageDiv.classList.add("searchCard");
                 searchResultsContainer.appendChild(messageDiv);
+                messageDiv.append(timestamp);
             });
             searchBox.style.display = 'block';
             searchResultCount.innerText = `${filteredMessages.length} matching results`;
