@@ -334,6 +334,7 @@ input:focus {
 }
 
 .card {
+    max-width: 75%;
     flex-basis: 100%;
     background-color: var(--bg-secondary-color);
     border-radius: 20px;
