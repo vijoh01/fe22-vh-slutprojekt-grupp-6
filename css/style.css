@@ -331,6 +331,8 @@ input:focus {
     width: 70%;
 }
 
+
+
 .card {
     flex-basis: 100%;
     background-color: var(--bg-secondary-color);
@@ -340,7 +342,7 @@ input:focus {
     word-wrap: break-word;
     width: 40rem;
     margin: 1px;
-    padding: 0.5rem 7%;
+    padding: 0.5rem 3%;
     max-width: 35rem;
     color: var(--para-color);
 }
@@ -521,6 +523,7 @@ input:focus {
     .card {
         flex-basis: calc(70%);
         width: 35rem;
+        padding: 0.5rem 7%;
     }
 
     .login-container {
