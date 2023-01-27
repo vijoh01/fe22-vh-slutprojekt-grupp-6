@@ -144,6 +144,12 @@ input:focus {
     row-gap: 10px;
 }
 
+.timestamp {
+    display: inline;
+    font-size: 0.75rem;
+    margin: 0.5rem!important;
+  }
+
 #logout,
 #random {
     display: flex;
