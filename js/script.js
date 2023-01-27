@@ -236,6 +236,7 @@ displayNameChange.addEventListener("submit", function (e) {
     e.preventDefault();
     e.stopPropagation();
     let newName = newDisplayName.value;
+    newDisplayName.value = '';
     profileWrapper.classList.add("hide");
 
     updateProfile(auth.currentUser, {
