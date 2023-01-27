@@ -138,7 +138,7 @@ input:focus {
 
 .card-container {
     display: flex;
-    flex-grow: column;
+    flex-frow: column;
     justify-content: center;
     column-gap: 30px;
     row-gap: 10px;
@@ -325,7 +325,7 @@ input:focus {
 
 .card-container {
     display: flex;
-    flex-grow: column;
+    flex-frow: column;
     justify-content: center;
     column-gap: 30px;
     row-gap: 10px;
