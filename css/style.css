@@ -331,8 +331,6 @@ input:focus {
     width: 70%;
 }
 
-
-
 .card {
     flex-basis: 100%;
     background-color: var(--bg-secondary-color);
