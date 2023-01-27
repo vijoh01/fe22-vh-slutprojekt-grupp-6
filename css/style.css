@@ -471,7 +471,6 @@ input:focus {
         position: fixed;
         bottom: 0;
         right: 0;
-        background-color: var(--bg-color);
         width: 6.2rem;
         height: 6.2rem;
         border-radius: 2rem 0rem 0rem 0rem;
@@ -521,7 +520,7 @@ input:focus {
     }
 
     .card {
-        flex-basis: calc(50% - 20px);
+        flex-basis: calc(70%);
         width: 35rem;
     }
 
@@ -539,7 +538,7 @@ input:focus {
   }
 
   .card {
-    flex-basis: calc(50% - 20px);
+    flex-basis: calc(70%);
     width: 35rem;
 
   }
