@@ -344,7 +344,6 @@ input:focus {
     width: 40rem;
     margin: 0 auto;
     padding: 0.5rem 3%;
-    max-width: 35rem;
     color: var(--para-color);
 }
 
