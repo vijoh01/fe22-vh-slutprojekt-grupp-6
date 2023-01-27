@@ -138,10 +138,12 @@ input:focus {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
     justify-content: center;
     column-gap: 30px;
     row-gap: 10px;
+    padding-top: 2rem;
+    width: 70%;
 }
 
 .timestamp {
@@ -323,7 +325,7 @@ input:focus {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
     justify-content: center;
     column-gap: 30px;
     row-gap: 10px;
@@ -331,9 +333,8 @@ input:focus {
     width: 70%;
 }
 
-
-
 .card {
+    max-width: 75%;
     flex-basis: 100%;
     background-color: var(--bg-secondary-color);
     border-radius: 20px;
@@ -341,7 +342,7 @@ input:focus {
     height: auto;
     word-wrap: break-word;
     width: 40rem;
-    margin: 1px;
+    margin: 0 auto;
     padding: 0.5rem 3%;
     max-width: 35rem;
     color: var(--para-color);
