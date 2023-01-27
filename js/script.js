@@ -245,6 +245,7 @@ displayNameChange.addEventListener("submit", function (e) {
         .then(() => {
             auth.currentUser.reload();
             username.innerText = auth.currentUser.displayName;
+            newDisplayName.setAttribute("placeholder", auth.currentUser.displayName);
             // Profile updated!
             // ...
         })
