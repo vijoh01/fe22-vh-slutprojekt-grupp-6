@@ -375,10 +375,14 @@ onValue(ref(database, "user/arr"), (snapshot) => {
             filteredMessages.forEach(function (childSnapshot) {
                 const childData = childSnapshot.val();
                 const messageDiv = document.createElement('div');
+                let timestamp = document.createElement('p');
+                timestamp.innerText = `${timeSince(childData.date)} ago`;
+                timestamp.className = "timestamp";
                 messageDiv.innerText = childData.displayName + ": " + childData.message;
                 messageDiv.style.backgroundColor = childData.color;
                 messageDiv.classList.add("searchCard");
                 searchResultsContainer.appendChild(messageDiv);
+                messageDiv.append(timestamp);
             });
             searchBox.style.display = 'block';
             searchResultCount.innerText = `${filteredMessages.length} matching results`;

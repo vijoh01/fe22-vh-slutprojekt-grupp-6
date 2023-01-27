@@ -361,6 +361,7 @@ input:focus {
 /*SEARCH BOX*/
 .search-box{
   display: none;
+  max-width: 300px;
   color: var(--para-color);
   margin: 2rem 0;
   padding: 2rem;
@@ -382,6 +383,8 @@ input:focus {
 }
 
 .searchCard {
+    inline-size: 250px;
+    overflow-wrap: break-word;
   background-color: var(--bg-secondary-color);
   padding: 1.5rem;
   margin: 1rem 0;
