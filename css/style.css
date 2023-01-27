@@ -323,7 +323,7 @@ input:focus {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-grow: column;
     justify-content: center;
     column-gap: 30px;
     row-gap: 10px;
@@ -341,7 +341,7 @@ input:focus {
     height: auto;
     word-wrap: break-word;
     width: 40rem;
-    margin: 1px;
+    margin: 0 auto;
     padding: 0.5rem 3%;
     max-width: 35rem;
     color: var(--para-color);
