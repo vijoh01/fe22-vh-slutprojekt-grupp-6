@@ -19,23 +19,23 @@ import {
 const loginWrapper = document.querySelector("#loginWrapper");
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-    databaseURL:
-        "https://chatapp-76264-default-rtdb.europe-west1.firebasedatabase.app/",
 
-    apiKey: "AIzaSyAZ0KJhUc6ltrF7QACjM8IW2JqeLWT3n3g",
+    apiKey: "AIzaSyBguE0WUsiXofapXvC5KcK9BMiofbnpuD4",
 
-    authDomain: "chatapp-76264.firebaseapp.com",
+    authDomain: "chatapp1-1343c.firebaseapp.com",
 
-    projectId: "chatapp-76264",
+    projectId: "chatapp1-1343c",
 
-    storageBucket: "chatapp-76264.appspot.com",
+    storageBucket: "chatapp1-1343c.appspot.com",
 
-    messagingSenderId: "957844540887",
+    messagingSenderId: "935813124202",
 
-    appId: "1:957844540887:web:b31870f3a4d046dd3d4f92",
-};
+    appId: "1:935813124202:web:7ee4e45865986783c73a13"
+
+  };
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
