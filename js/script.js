@@ -25,6 +25,8 @@ const firebaseConfig = {
 
     authDomain: "chatapp1-1343c.firebaseapp.com",
 
+    databaseURL: "https://chatapp1-1343c-default-rtdb.europe-west1.firebasedatabase.app",
+
     projectId: "chatapp1-1343c",
 
     storageBucket: "chatapp1-1343c.appspot.com",
@@ -34,6 +36,7 @@ const firebaseConfig = {
     appId: "1:935813124202:web:7ee4e45865986783c73a13"
 
   };
+
 
 
 
